@@ -1,0 +1,616 @@
+{
+  "schemaVersion": 3,
+  "season": 2026,
+  "updatedAt": "2026-09-13T19:15:00Z",
+  "baselineLabel": "After 2026 Spanish Grand Prix — Sep 13, 2026",
+  "lastRaceRound": 14,
+  "lastRaceName": "Spanish GP",
+  "lastSessionName": "Race",
+  "drivers": [
+    {
+      "id": "ANT",
+      "number": 12,
+      "name": "Kimi Antonelli",
+      "team": "Mercedes",
+      "points": 292,
+      "wins": 8,
+      "podiums": 12,
+      "active": true
+    },
+    {
+      "id": "RUS",
+      "number": 63,
+      "name": "George Russell",
+      "team": "Mercedes",
+      "points": 211,
+      "wins": 2,
+      "podiums": 7,
+      "active": true
+    },
+    {
+      "id": "HAM",
+      "number": 44,
+      "name": "Lewis Hamilton",
+      "team": "Ferrari",
+      "points": 191,
+      "wins": 1,
+      "podiums": 5,
+      "active": true
+    },
+    {
+      "id": "NOR",
+      "number": 1,
+      "name": "Lando Norris",
+      "team": "McLaren",
+      "points": 186,
+      "wins": 2,
+      "podiums": 5,
+      "active": true
+    },
+    {
+      "id": "LEC",
+      "number": 16,
+      "name": "Charles Leclerc",
+      "team": "Ferrari",
+      "points": 167,
+      "wins": 1,
+      "podiums": 4,
+      "active": true
+    },
+    {
+      "id": "VER",
+      "number": 3,
+      "name": "Max Verstappen",
+      "team": "Red Bull Racing",
+      "points": 145,
+      "wins": 0,
+      "podiums": 6,
+      "active": true
+    },
+    {
+      "id": "PIA",
+      "number": 81,
+      "name": "Oscar Piastri",
+      "team": "McLaren",
+      "points": 120,
+      "wins": 0,
+      "podiums": 2,
+      "active": true
+    },
+    {
+      "id": "HAD",
+      "number": 6,
+      "name": "Isack Hadjar",
+      "team": "Red Bull Racing",
+      "points": 71,
+      "wins": 0,
+      "podiums": 1,
+      "active": false
+    },
+    {
+      "id": "LAW",
+      "number": 30,
+      "name": "Liam Lawson",
+      "team": "Red Bull Racing",
+      "points": 59,
+      "wins": 0,
+      "podiums": 0,
+      "active": true
+    },
+    {
+      "id": "GAS",
+      "number": 10,
+      "name": "Pierre Gasly",
+      "team": "Alpine",
+      "points": 41,
+      "wins": 0,
+      "podiums": 0,
+      "active": true
+    },
+    {
+      "id": "LIN",
+      "number": 41,
+      "name": "Arvid Lindblad",
+      "team": "Racing Bulls",
+      "points": 31,
+      "wins": 0,
+      "podiums": 0,
+      "active": true
+    },
+    {
+      "id": "COL",
+      "number": 43,
+      "name": "Franco Colapinto",
+      "team": "Alpine",
+      "points": 27,
+      "wins": 0,
+      "podiums": 0,
+      "active": true
+    },
+    {
+      "id": "BEA",
+      "number": 87,
+      "name": "Oliver Bearman",
+      "team": "Haas F1 Team",
+      "points": 18,
+      "wins": 0,
+      "podiums": 0,
+      "active": true
+    },
+    {
+      "id": "BOR",
+      "number": 5,
+      "name": "Gabriel Bortoleto",
+      "team": "Audi",
+      "points": 10,
+      "wins": 0,
+      "podiums": 0,
+      "active": true
+    },
+    {
+      "id": "HUL",
+      "number": 27,
+      "name": "Nico Hulkenberg",
+      "team": "Audi",
+      "points": 7,
+      "wins": 0,
+      "podiums": 0,
+      "active": true
+    },
+    {
+      "id": "SAI",
+      "number": 55,
+      "name": "Carlos Sainz",
+      "team": "Williams",
+      "points": 6,
+      "wins": 0,
+      "podiums": 0,
+      "active": true
+    },
+    {
+      "id": "ALB",
+      "number": 23,
+      "name": "Alexander Albon",
+      "team": "Williams",
+      "points": 5,
+      "wins": 0,
+      "podiums": 0,
+      "active": true
+    },
+    {
+      "id": "OCO",
+      "number": 31,
+      "name": "Esteban Ocon",
+      "team": "Haas F1 Team",
+      "points": 3,
+      "wins": 0,
+      "podiums": 0,
+      "active": true
+    },
+    {
+      "id": "ALO",
+      "number": 14,
+      "name": "Fernando Alonso",
+      "team": "Aston Martin",
+      "points": 3,
+      "wins": 0,
+      "podiums": 0,
+      "active": true
+    },
+    {
+      "id": "TSU",
+      "number": 22,
+      "name": "Yuki Tsunoda",
+      "team": "Racing Bulls",
+      "points": 1,
+      "wins": 0,
+      "podiums": 0,
+      "active": true
+    },
+    {
+      "id": "STR",
+      "number": 18,
+      "name": "Lance Stroll",
+      "team": "Aston Martin",
+      "points": 0,
+      "wins": 0,
+      "podiums": 0,
+      "active": true
+    },
+    {
+      "id": "BOT",
+      "number": 77,
+      "name": "Valtteri Bottas",
+      "team": "Cadillac",
+      "points": 0,
+      "wins": 0,
+      "podiums": 0,
+      "active": true
+    },
+    {
+      "id": "PER",
+      "number": 11,
+      "name": "Sergio Perez",
+      "team": "Cadillac",
+      "points": 0,
+      "wins": 0,
+      "podiums": 0,
+      "active": true
+    }
+  ],
+  "constructors": [
+    {
+      "name": "Mercedes",
+      "points": 503,
+      "wins": 10,
+      "podiums": 19
+    },
+    {
+      "name": "Ferrari",
+      "points": 358,
+      "wins": 2,
+      "podiums": 9
+    },
+    {
+      "name": "McLaren",
+      "points": 306,
+      "wins": 2,
+      "podiums": 7
+    },
+    {
+      "name": "Red Bull Racing",
+      "points": 230,
+      "wins": 0,
+      "podiums": 7
+    },
+    {
+      "name": "Racing Bulls",
+      "points": 77,
+      "wins": 0,
+      "podiums": 0
+    },
+    {
+      "name": "Alpine",
+      "points": 68,
+      "wins": 0,
+      "podiums": 0
+    },
+    {
+      "name": "Haas F1 Team",
+      "points": 21,
+      "wins": 0,
+      "podiums": 0
+    },
+    {
+      "name": "Audi",
+      "points": 17,
+      "wins": 0,
+      "podiums": 0
+    },
+    {
+      "name": "Williams",
+      "points": 11,
+      "wins": 0,
+      "podiums": 0
+    },
+    {
+      "name": "Aston Martin",
+      "points": 3,
+      "wins": 0,
+      "podiums": 0
+    },
+    {
+      "name": "Cadillac",
+      "points": 0,
+      "wins": 0,
+      "podiums": 0
+    }
+  ],
+  "calendar": [
+    {
+      "round": 1,
+      "meetingKey": 1279,
+      "name": "Australian GP",
+      "place": "Melbourne",
+      "date": "Mar 6–8",
+      "completed": true,
+      "sprint": false,
+      "sprintCompleted": false,
+      "podium": [
+        "RUS",
+        "ANT",
+        "LEC"
+      ]
+    },
+    {
+      "round": 2,
+      "meetingKey": 1280,
+      "name": "Chinese GP",
+      "place": "Shanghai",
+      "date": "Mar 13–15",
+      "completed": true,
+      "sprint": true,
+      "sprintCompleted": true,
+      "podium": [
+        "ANT",
+        "RUS",
+        "HAM"
+      ],
+      "sprintWinner": "RUS"
+    },
+    {
+      "round": 3,
+      "meetingKey": 1281,
+      "name": "Japanese GP",
+      "place": "Suzuka",
+      "date": "Mar 27–29",
+      "completed": true,
+      "sprint": false,
+      "sprintCompleted": false,
+      "podium": [
+        "ANT",
+        "PIA",
+        "LEC"
+      ]
+    },
+    {
+      "round": 4,
+      "meetingKey": 1284,
+      "name": "Miami GP",
+      "place": "Miami",
+      "date": "May 1–3",
+      "completed": true,
+      "sprint": true,
+      "sprintCompleted": true,
+      "podium": [
+        "ANT",
+        "NOR",
+        "PIA"
+      ],
+      "sprintWinner": "NOR"
+    },
+    {
+      "round": 5,
+      "meetingKey": 1285,
+      "name": "Canadian GP",
+      "place": "Montreal",
+      "date": "May 22–24",
+      "completed": true,
+      "sprint": true,
+      "sprintCompleted": true,
+      "podium": [
+        "ANT",
+        "HAM",
+        "VER"
+      ],
+      "sprintWinner": "RUS"
+    },
+    {
+      "round": 6,
+      "meetingKey": 1286,
+      "name": "Monaco GP",
+      "place": "Monaco",
+      "date": "Jun 5–7",
+      "completed": true,
+      "sprint": false,
+      "sprintCompleted": false,
+      "podium": [
+        "ANT",
+        "HAM",
+        "HAD"
+      ]
+    },
+    {
+      "round": 7,
+      "meetingKey": 1287,
+      "name": "Barcelona-Catalunya GP",
+      "place": "Barcelona",
+      "date": "Jun 12–14",
+      "completed": true,
+      "sprint": false,
+      "sprintCompleted": false,
+      "podium": [
+        "HAM",
+        "RUS",
+        "NOR"
+      ]
+    },
+    {
+      "round": 8,
+      "meetingKey": 1288,
+      "name": "Austrian GP",
+      "place": "Spielberg",
+      "date": "Jun 26–28",
+      "completed": true,
+      "sprint": false,
+      "sprintCompleted": false,
+      "podium": [
+        "RUS",
+        "VER",
+        "ANT"
+      ]
+    },
+    {
+      "round": 9,
+      "meetingKey": 1289,
+      "name": "British GP",
+      "place": "Silverstone",
+      "date": "Jul 3–5",
+      "completed": true,
+      "sprint": true,
+      "sprintCompleted": true,
+      "podium": [
+        "LEC",
+        "RUS",
+        "HAM"
+      ],
+      "sprintWinner": "ANT"
+    },
+    {
+      "round": 10,
+      "meetingKey": 1290,
+      "name": "Belgian GP",
+      "place": "Spa-Francorchamps",
+      "date": "Jul 17–19",
+      "completed": true,
+      "sprint": false,
+      "sprintCompleted": false,
+      "podium": [
+        "ANT",
+        "LEC",
+        "VER"
+      ]
+    },
+    {
+      "round": 11,
+      "meetingKey": 1291,
+      "name": "Hungarian GP",
+      "place": "Budapest",
+      "date": "Jul 24–26",
+      "completed": true,
+      "sprint": false,
+      "sprintCompleted": false,
+      "podium": [
+        "NOR",
+        "VER",
+        "ANT"
+      ]
+    },
+    {
+      "round": 12,
+      "meetingKey": 1292,
+      "name": "Dutch GP",
+      "place": "Zandvoort",
+      "date": "Aug 21–23",
+      "completed": true,
+      "sprint": true,
+      "sprintCompleted": true,
+      "podium": [
+        "NOR",
+        "ANT",
+        "RUS"
+      ],
+      "sprintWinner": "RUS"
+    },
+    {
+      "round": 13,
+      "meetingKey": 1293,
+      "name": "Italian GP",
+      "place": "Monza",
+      "date": "Sep 4–6",
+      "completed": true,
+      "sprint": false,
+      "sprintCompleted": false,
+      "podium": [
+        "ANT",
+        "RUS",
+        "VER"
+      ]
+    },
+    {
+      "round": 14,
+      "meetingKey": 1294,
+      "name": "Spanish GP",
+      "place": "Madrid",
+      "date": "Sep 11–13",
+      "completed": true,
+      "sprint": false,
+      "sprintCompleted": false,
+      "podium": [
+        "ANT",
+        "VER",
+        "NOR"
+      ]
+    },
+    {
+      "round": 15,
+      "meetingKey": 1295,
+      "name": "Azerbaijan GP",
+      "place": "Baku",
+      "date": "Sep 24–26",
+      "completed": false,
+      "sprint": false,
+      "sprintCompleted": false
+    },
+    {
+      "round": 16,
+      "meetingKey": 1308,
+      "name": "Bahrain GP in Malaysia",
+      "place": "Sepang",
+      "date": "Oct 2–4",
+      "completed": false,
+      "sprint": false,
+      "sprintCompleted": false
+    },
+    {
+      "round": 17,
+      "meetingKey": 1296,
+      "name": "Singapore GP",
+      "place": "Singapore",
+      "date": "Oct 9–11",
+      "completed": false,
+      "sprint": true,
+      "sprintCompleted": false
+    },
+    {
+      "round": 18,
+      "meetingKey": 1297,
+      "name": "United States GP",
+      "place": "Austin",
+      "date": "Oct 23–25",
+      "completed": false,
+      "sprint": false,
+      "sprintCompleted": false
+    },
+    {
+      "round": 19,
+      "meetingKey": 1298,
+      "name": "Mexico City GP",
+      "place": "Mexico City",
+      "date": "Oct 30–Nov 1",
+      "completed": false,
+      "sprint": false,
+      "sprintCompleted": false
+    },
+    {
+      "round": 20,
+      "meetingKey": 1299,
+      "name": "Sao Paulo GP",
+      "place": "Sao Paulo",
+      "date": "Nov 6–8",
+      "completed": false,
+      "sprint": false,
+      "sprintCompleted": false
+    },
+    {
+      "round": 21,
+      "meetingKey": 1300,
+      "name": "Las Vegas GP",
+      "place": "Las Vegas",
+      "date": "Nov 19–21",
+      "completed": false,
+      "sprint": false,
+      "sprintCompleted": false
+    },
+    {
+      "round": 22,
+      "meetingKey": 1301,
+      "name": "Qatar GP",
+      "place": "Lusail",
+      "date": "Nov 27–29",
+      "completed": false,
+      "sprint": false,
+      "sprintCompleted": false
+    },
+    {
+      "round": 23,
+      "meetingKey": 1302,
+      "name": "Abu Dhabi GP",
+      "place": "Yas Marina",
+      "date": "Dec 4–6",
+      "completed": false,
+      "sprint": false,
+      "sprintCompleted": false
+    }
+  ]
+}

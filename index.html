@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#090b10" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="F1 Scenario Lab" />
+<meta name="format-detection" content="telephone=no" />
+<title>F1 2026 Championship Scenario Lab</title>
+<style>
+  :root {
+    --bg:#090b10; --panel:#11141c; --panel2:#171b24; --line:#2a2f3b;
+    --text:#f5f7fb; --muted:#9ca5b5; --red:#ff1e2d; --green:#29d17d;
+    --amber:#ffc247; --blue:#55a9ff; --purple:#a978ff; --danger:#ff5d67;
+    --shadow:0 18px 50px rgba(0,0,0,.34); --radius:18px;
+  }
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;background:radial-gradient(circle at 85% -10%,rgba(255,30,45,.16),transparent 28%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.45}
+  button,input,select{font:inherit} button{cursor:pointer}
+  .app{max-width:1600px;margin:0 auto;padding:18px}
+  .topbar{position:sticky;top:0;z-index:20;margin:-18px -18px 18px;padding:14px 18px;background:rgba(9,11,16,.9);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:14px;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:12px}.mark{font-weight:950;font-style:italic;letter-spacing:-1.5px;font-size:24px;color:#fff}.mark span{color:var(--red)}
+  .brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+  .top-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+  .btn{border:1px solid var(--line);background:#181c25;color:#fff;padding:9px 12px;border-radius:11px;font-weight:750}.btn:hover{background:#202532}.btn.red{background:var(--red);border-color:var(--red)}.btn.ghost{background:transparent}.btn.warn{color:#0b0d12;background:var(--amber);border-color:var(--amber)}
+  .hero{display:grid;grid-template-columns:1.25fr .75fr;gap:16px;margin-bottom:16px}.hero-card,.card{background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.01)),var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+  .hero-main{padding:26px;position:relative;overflow:hidden}.hero-main:after{content:"";position:absolute;right:-120px;top:-100px;width:360px;height:360px;border:44px solid rgba(255,30,45,.14);border-radius:50%;transform:skewX(-14deg)}
+  h1{margin:4px 0 8px;font-size:clamp(31px,5vw,62px);line-height:.98;letter-spacing:-.045em;max-width:900px}.accent{color:var(--red)}
+  .hero-main p{color:#bac1cd;max-width:900px;margin:12px 0 0;font-size:15px}.eyebrow{color:var(--red);text-transform:uppercase;font-size:12px;letter-spacing:.16em;font-weight:900}
+  .status-card{padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:10px;align-content:center}.metric{padding:14px;border-radius:14px;background:var(--panel2);border:1px solid var(--line)}.metric b{display:block;font-size:25px}.metric span{color:var(--muted);font-size:12px}
+  .note{grid-column:1/-1;color:#cfd4de;font-size:12px;padding:11px 12px;background:#0c0e14;border-left:3px solid var(--amber);border-radius:9px}
+  .tabs{display:flex;gap:8px;overflow:auto;padding:4px;margin:10px 0 16px}.tab{white-space:nowrap;border:1px solid var(--line);background:#11141b;color:#cbd1dc;padding:10px 14px;border-radius:999px;font-weight:800}.tab.active{background:#fff;color:#080a0f;border-color:#fff}
+  .view{display:none}.view.active{display:block}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{padding:18px;overflow:hidden}.card h2{margin:0 0 4px;font-size:19px}.sub{color:var(--muted);font-size:12px;margin-bottom:14px}
+  .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px}.standings{width:100%;border-collapse:collapse;min-width:700px}.standings th,.standings td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.06);text-align:left;font-size:13px}.standings th{position:sticky;top:0;background:#171b24;color:#929baa;text-transform:uppercase;font-size:10px;letter-spacing:.08em;z-index:2}.standings tr:last-child td{border-bottom:none}.standings tr:hover td{background:rgba(255,255,255,.018)}.pos{font-weight:950;font-size:16px}.entity{font-weight:800}.team-tag{font-size:11px;color:var(--muted)}.num{text-align:right!important;font-variant-numeric:tabular-nums}.leader{color:var(--green)}.gap{color:#aeb6c3}.delta.up{color:var(--green)}.delta.down{color:var(--danger)}
+  .calendar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.race{border:1px solid var(--line);border-radius:15px;padding:13px;background:var(--panel2);position:relative;min-height:132px}.race.completed{opacity:.82}.race.current{border-color:var(--red);box-shadow:inset 0 0 0 1px rgba(255,30,45,.35)}.race .rnum{font-size:10px;color:var(--muted);font-weight:850;text-transform:uppercase;letter-spacing:.1em}.race h3{margin:3px 0 2px;font-size:16px}.race .date{font-size:11px;color:var(--muted)}.pill{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:4px 7px;font-size:10px;font-weight:850;margin-top:8px;border:1px solid var(--line)}.pill.sprint{background:rgba(169,120,255,.12);color:#d0b5ff;border-color:rgba(169,120,255,.34)}.pill.done{background:rgba(41,209,125,.10);color:#86efb3;border-color:rgba(41,209,125,.3)}.pill.live{background:rgba(255,30,45,.13);color:#ff8d95;border-color:rgba(255,30,45,.35)}.result{font-size:11px;color:#c9cfda;margin-top:8px}.result b{color:#fff}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:end}.field{display:flex;flex-direction:column;gap:5px;min-width:170px}.field label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:850}.field select,.field input{background:#0c0f15;color:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 10px;outline:none}.field input:focus,.field select:focus{border-color:#697486}
+  .sim-layout{display:grid;grid-template-columns:310px minmax(0,1fr);gap:16px}.side-stack{display:flex;flex-direction:column;gap:12px}.quick{padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--panel2)}.quick h3{margin:0 0 10px;font-size:14px}.quick p{color:var(--muted);font-size:11px;margin:6px 0 10px}.quick .field{min-width:0;width:100%;margin-bottom:8px}
+  .session-tabs{display:flex;gap:8px;margin:12px 0}.session-tab{border:1px solid var(--line);background:#151923;color:#adb5c3;border-radius:10px;padding:8px 11px;font-weight:800}.session-tab.active{background:#fff;color:#0b0d12}.session-tab:disabled{opacity:.35;cursor:not-allowed}
+  .editor-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}.driver-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}.driver-row{display:grid;grid-template-columns:minmax(120px,1fr) 84px 92px 56px;gap:7px;align-items:center;border:1px solid var(--line);border-radius:11px;padding:8px;background:#0e1118}.driver-row .name{font-size:12px;font-weight:800;min-width:0}.driver-row .name small{display:block;color:var(--muted);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.driver-row select,.driver-row input{width:100%;background:#171b24;color:#fff;border:1px solid #303644;border-radius:8px;padding:6px;font-size:12px}.award{text-align:right;font-weight:900;font-variant-numeric:tabular-nums}.manual-active{outline:1px solid var(--amber)}
+  .constructor-overrides{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}.override-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}.override-item{display:flex;gap:6px;align-items:center;background:#0d1017;border:1px solid var(--line);border-radius:9px;padding:6px 8px}.override-item span{font-size:11px;flex:1}.override-item input{width:58px;background:#171b24;color:#fff;border:1px solid #303644;border-radius:7px;padding:5px}
+  .analysis-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:16px}.title-box{border:1px solid var(--line);background:var(--panel2);border-radius:14px;padding:15px;margin-top:10px}.title-box .big{font-size:34px;font-weight:950;letter-spacing:-.04em}.title-box .label{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:850}.title-box.good{border-color:rgba(41,209,125,.45)}.title-box.bad{border-color:rgba(255,93,103,.45)}
+  .math-list{display:grid;gap:9px;margin-top:12px}.math-row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(255,255,255,.06);padding-bottom:8px;font-size:13px}.math-row span:first-child{color:var(--muted)}.explain{margin-top:12px;color:#c7cdd8;font-size:12px;line-height:1.6}
+  .livebar{grid-column:1/-1;display:flex;align-items:center;gap:10px;padding:11px 12px;border:1px solid var(--line);border-radius:13px;background:#0c0f15;min-width:0}.livebar .live-copy{min-width:0;flex:1}.livebar b{font-size:12px;display:block}.livebar small{display:block;color:var(--muted);font-size:10px;margin-top:1px;white-space:normal}.live-dot{width:10px;height:10px;border-radius:50%;flex:0 0 auto;background:var(--muted);box-shadow:0 0 0 4px rgba(156,165,181,.08)}.live-dot.live{background:var(--green);box-shadow:0 0 0 4px rgba(41,209,125,.10)}.live-dot.cache{background:var(--amber);box-shadow:0 0 0 4px rgba(255,194,71,.10)}.live-dot.error{background:var(--danger);box-shadow:0 0 0 4px rgba(255,93,103,.10)}.live-dot.syncing{background:var(--blue);box-shadow:0 0 0 4px rgba(85,169,255,.10);animation:pulseLive 1s ease-in-out infinite}.livebar .btn{padding:7px 9px;font-size:11px;white-space:nowrap}@keyframes pulseLive{50%{opacity:.38}}
+  .sourcebox{font-size:11px;color:var(--muted);margin-top:16px;border-top:1px solid var(--line);padding-top:12px}.sourcebox a{color:#cfd5df}.warning{padding:10px 12px;border:1px solid rgba(255,194,71,.38);background:rgba(255,194,71,.08);border-radius:10px;color:#f6d98d;font-size:11px;margin:10px 0}.error{padding:8px 10px;border:1px solid rgba(255,93,103,.45);background:rgba(255,93,103,.08);border-radius:9px;color:#ffadb2;font-size:11px;display:none}.error.show{display:block}
+  .empty{color:var(--muted);padding:16px;text-align:center}.footer{color:#7f8999;text-align:center;font-size:10px;padding:24px 10px 8px}
+  @media(max-width:1100px){.hero,.grid,.analysis-grid{grid-template-columns:1fr}.calendar{grid-template-columns:repeat(3,minmax(0,1fr))}.sim-layout{grid-template-columns:1fr}.side-stack{display:grid;grid-template-columns:repeat(2,1fr)}.driver-grid{grid-template-columns:1fr}.override-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:700px){.app{padding:10px}.topbar{margin:-10px -10px 12px;padding:10px}.brand small{display:none}.top-actions .btn{padding:7px 9px;font-size:11px}.hero-main{padding:18px}.status-card{padding:13px}.calendar{grid-template-columns:1fr 1fr}.side-stack{grid-template-columns:1fr}.driver-row{grid-template-columns:minmax(100px,1fr) 74px 78px 44px;padding:6px}.override-grid{grid-template-columns:repeat(2,1fr)}.card{padding:13px}}
+
+  /* ================================================================
+     iPHONE / TOUCH UI
+     Mobile-first overrides. The desktop UI remains intact above 760px.
+     ================================================================ */
+  .mobile-only{display:none}
+  .bottom-nav{display:none}
+  .mobile-install-note{display:none}
+  @media(max-width:760px){
+    html{background:var(--bg);-webkit-text-size-adjust:100%}
+    body{padding-bottom:calc(78px + env(safe-area-inset-bottom));overscroll-behavior-y:none}
+    .app{padding:10px 10px 0;max-width:none}
+    .topbar{position:relative;top:auto;margin:-10px -10px 10px;padding:calc(10px + env(safe-area-inset-top)) 10px 10px;display:block;background:linear-gradient(180deg,#090b10 70%,rgba(9,11,16,.96));backdrop-filter:none}
+    .brand{justify-content:space-between}.mark{font-size:23px}.brand small{display:block;font-size:9px}
+    .top-actions{margin-top:10px;display:flex;gap:7px;overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;padding-bottom:3px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    .top-actions::-webkit-scrollbar{display:none}.top-actions .btn{flex:0 0 auto;min-height:42px;padding:9px 12px;font-size:12px}
+    .hero{display:block;margin-bottom:10px}.hero-main{padding:16px;border-radius:16px}.hero-main:after{width:220px;height:220px;right:-110px;top:-90px;border-width:28px}.hero-main .eyebrow{font-size:10px}.hero-main h1{font-size:31px;max-width:90%;margin-top:5px}.hero-main p{font-size:12px;line-height:1.5;max-width:92%}
+    .status-card{display:grid;grid-template-columns:1fr 1fr;padding:10px;gap:7px;margin-top:8px}.metric{padding:10px}.metric b{font-size:21px}.metric span{font-size:10px}.note{font-size:10px;padding:8px 9px}
+    #mainTabs{display:none}
+    .grid,.analysis-grid,.sim-layout{display:block}.grid>.card,.analysis-grid>.card,.sim-layout>.card{margin-bottom:10px}
+    .card{padding:12px;border-radius:15px;box-shadow:0 12px 28px rgba(0,0,0,.24)}.card h2{font-size:17px}.sub{font-size:11px;margin-bottom:10px}
+    .calendar{grid-template-columns:1fr;gap:8px}.race{min-height:auto;padding:12px}.race h3{font-size:15px}
+    .side-stack{display:block}.quick{padding:12px;margin-bottom:9px}.quick h3{font-size:14px}.quick p{font-size:11px}
+    .toolbar{display:grid;grid-template-columns:1fr;gap:8px;width:100%}.field{min-width:0;width:100%}.field select,.field input,select,input{font-size:16px;min-height:44px}
+    .editor-head{position:sticky;top:0;z-index:8;margin:-12px -12px 0;padding:11px 12px 9px;background:rgba(17,20,28,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    .editor-head h2{font-size:16px}.editor-head .sub{display:none}.editor-head .toolbar{display:grid;grid-template-columns:1fr auto;align-items:end}.editor-head .field{min-width:0}.editor-head .btn{min-height:44px}
+    .session-tabs{position:sticky;top:105px;z-index:7;background:var(--panel);padding:8px 0 7px;margin:0 0 8px}.session-tab{flex:1;min-height:43px;font-size:13px}.session-tabs{display:flex}
+    .driver-grid{grid-template-columns:1fr;gap:7px;margin-top:8px}.driver-row{grid-template-columns:1fr 1fr 54px;grid-template-areas:"name name name" "pos pts award";padding:10px;gap:7px}.driver-row .name{grid-area:name;font-size:13px;border-bottom:1px solid rgba(255,255,255,.055);padding-bottom:7px}.driver-row .name small{display:inline;margin-left:6px}.driver-row .pos-input{grid-area:pos}.driver-row .pts-input{grid-area:pts}.driver-row .award{grid-area:award;align-self:center;text-align:center;font-size:15px}.driver-row select,.driver-row input{min-height:43px;font-size:16px;padding:7px 8px}
+    .constructor-overrides{margin-top:10px;padding-top:10px}.override-grid{grid-template-columns:1fr 1fr}.override-item{padding:7px}.override-item input{width:66px;min-height:40px;font-size:16px}
+    .table-wrap{border:none;overflow:visible}.standings{min-width:0;width:100%;table-layout:auto}.standings th,.standings td{padding:9px 6px;font-size:12px}.standings th{font-size:9px}.standings th:nth-child(3),.standings td:nth-child(3),.standings th:nth-child(7),.standings td:nth-child(7),.standings th:nth-child(8),.standings td:nth-child(8){display:none}.standings .entity{font-size:12px}.standings .team-tag{font-size:9px}.standings .pos{font-size:14px}.standings th:nth-child(2){width:45%}
+    .title-box{padding:12px}.title-box .big{font-size:29px}.math-row{font-size:12px}.explain{font-size:11px}.warning{font-size:10px}
+    .sourcebox{font-size:10px;padding:11px}.footer{padding-bottom:8px}
+    .mobile-only{display:block}
+    .mobile-install-note{display:block;margin:0 0 10px;padding:10px 11px;border:1px solid rgba(85,169,255,.32);background:rgba(85,169,255,.08);border-radius:12px;color:#cfe7ff;font-size:11px;line-height:1.45}
+    .bottom-nav{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(10,12,17,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.10);padding:6px 6px calc(6px + env(safe-area-inset-bottom));box-shadow:0 -10px 35px rgba(0,0,0,.35)}
+    .bottom-nav button{border:0;background:transparent;color:#8993a4;border-radius:11px;min-height:51px;padding:5px 2px;font-size:9px;font-weight:800;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+    .bottom-nav button .nav-icon{font-size:20px;line-height:1}.bottom-nav button.active{color:#fff;background:#1a1f2a}.bottom-nav button.active .nav-icon{color:var(--red)}
+  }
+  @media(max-width:390px){.hero-main h1{font-size:28px}.status-card{grid-template-columns:1fr 1fr}.override-grid{grid-template-columns:1fr}.standings th,.standings td{padding-left:4px;padding-right:4px;font-size:11px}.standings th:nth-child(4),.standings td:nth-child(4){display:none}}
+
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><div class="mark"><span>F1</span> Scenario Lab</div><small>2026 Championship Simulator</small></div>
+    <div class="top-actions">
+      <button class="btn warn" id="refreshLiveBtn">Refresh F1 data</button>
+      <button class="btn ghost" id="exportBtn">Export scenario</button>
+      <button class="btn ghost" id="importBtn">Import scenario</button>
+      <button class="btn" id="saveBtn">Save locally</button>
+      <button class="btn red" id="resetBtn">Reset simulation</button>
+      <input type="file" id="importFile" accept="application/json" hidden />
+    </div>
+  </header>
+
+
+  <div class="mobile-install-note">
+    <b>iPhone tip:</b> Host this bundle on GitHub Pages, open the HTTPS address in Safari, then use <b>Share → Add to Home Screen</b>. Once hosted, standings refresh automatically whenever you launch the dashboard.
+  </div>
+
+  <section class="hero">
+    <div class="hero-card hero-main">
+      <div class="eyebrow" id="baselineEyebrow">Cached baseline • After 2026 Spanish Grand Prix</div>
+      <h1>Turn the title fight into a <span class="accent">what-if machine.</span></h1>
+      <p id="heroCopy">Actual championship data is locked through the Spanish Grand Prix. Simulate every remaining round and watch the projected title fight recalculate instantly.</p>
+    </div>
+    <div class="hero-card status-card">
+      <div class="metric"><b id="completedCount">14</b><span>completed Grands Prix</span></div>
+      <div class="metric"><b id="remainingCount">9</b><span>remaining Grands Prix</span></div>
+      <div class="metric"><b id="remainingSprintCount">1</b><span>remaining Sprints</span></div>
+      <div class="metric"><b id="maxDriverPts">233</b><span>max driver points still available</span></div>
+      <div class="livebar" id="liveStatusBar" data-state="cache">
+        <span class="live-dot cache" id="liveDot" aria-hidden="true"></span>
+        <div class="live-copy"><b id="liveStatusTitle">Built-in snapshot through Spanish GP</b><small id="liveStatusDetail">Live refresh starts automatically when the hosted app opens.</small></div>
+        <button class="btn" id="refreshLiveBtnHero" type="button">Refresh</button>
+      </div>
+      <div class="note">Actual results always override simulations. When a Grand Prix or Sprint becomes official, that session is locked and its hypothetical inputs are cleared while your scenarios for later races remain intact.</div>
+    </div>
+  </section>
+
+  <nav class="tabs" id="mainTabs">
+    <button class="tab active" data-view="standings">Standings</button>
+    <button class="tab" data-view="calendar">Calendar</button>
+    <button class="tab" data-view="simulator">Scenario simulator</button>
+    <button class="tab" data-view="titlemath">Title math</button>
+  </nav>
+
+  <main>
+    <section class="view active" id="view-standings">
+      <div class="grid">
+        <div class="card"><h2>Drivers' Championship</h2><div class="sub">Projected totals include your scenario. GP podiums do not count Sprint top-three finishes.</div><div class="table-wrap"><table class="standings" id="driverTable"></table></div></div>
+        <div class="card"><h2>Constructors' Championship</h2><div class="sub">Constructor projections use driver results unless you enter an explicit constructor session override.</div><div class="table-wrap"><table class="standings" id="constructorTable"></table></div></div>
+      </div>
+    </section>
+
+    <section class="view" id="view-calendar">
+      <div class="card"><h2>2026 revised race calendar</h2><div class="sub">The canceled April Bahrain and Saudi Arabia rounds are not counted. Sepang appears as the Bahrain Grand Prix in Malaysia.</div><div class="calendar" id="calendarGrid"></div></div>
+    </section>
+
+    <section class="view" id="view-simulator">
+      <div class="sim-layout">
+        <aside class="side-stack">
+          <div class="quick">
+            <h3>Quick driver scenario</h3>
+            <p>Apply the same result across every remaining event in one click.</p>
+            <div class="field"><label>Driver</label><select id="quickDriver"></select></div>
+            <div class="field"><label>GP finish</label><select id="quickDriverPos"></select></div>
+            <label style="font-size:11px;color:var(--muted);display:flex;gap:8px;align-items:center;margin:8px 0 10px"><input type="checkbox" id="quickSprint" checked /> Apply same finishing position to Sprint sessions where valid</label>
+            <button class="btn red" style="width:100%" id="applyDriverQuick">Apply to all remaining</button>
+          </div>
+          <div class="quick">
+            <h3>Quick constructor scenario</h3>
+            <p>Give both current drivers a 1–2 finish in each remaining GP and Sprint.</p>
+            <div class="field"><label>Constructor</label><select id="quickConstructor"></select></div>
+            <button class="btn warn" style="width:100%" id="applyConstructorSweep">1–2 sweep remaining</button>
+          </div>
+          <div class="quick">
+            <h3>Scenario summary</h3>
+            <div class="math-list">
+              <div class="math-row"><span>Sessions with inputs</span><b id="sessionCount">0</b></div>
+              <div class="math-row"><span>Projected driver leader</span><b id="projDriverLeader">—</b></div>
+              <div class="math-row"><span>Projected constructor leader</span><b id="projConstructorLeader">—</b></div>
+            </div>
+          </div>
+        </aside>
+
+        <section class="card">
+          <div class="editor-head">
+            <div><h2>Race-by-race editor</h2><div class="sub">Choose finishing positions, enter direct points overrides, or combine both. A direct driver points value overrides that driver's position for the selected session.</div></div>
+            <div class="toolbar">
+              <div class="field"><label>Event</label><select id="eventSelect"></select></div>
+              <button class="btn" id="clearEvent">Clear event</button>
+            </div>
+          </div>
+          <div class="session-tabs"><button class="session-tab active" data-session="race">Grand Prix</button><button class="session-tab" data-session="sprint" id="sprintTab">Sprint</button></div>
+          <div class="error" id="editorError"></div>
+          <div class="driver-grid" id="driverEditor"></div>
+          <div class="constructor-overrides">
+            <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap"><div><b style="font-size:13px">Constructor session-point overrides</b><div class="sub" style="margin:2px 0 0">Optional. If set, this value replaces the points derived from that constructor's two active drivers for this session.</div></div><button class="btn ghost" id="clearConstructorOverrides">Clear overrides</button></div>
+            <div class="override-grid" id="constructorOverrides"></div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="view" id="view-titlemath">
+      <div class="analysis-grid">
+        <div class="card">
+          <h2>Title target</h2><div class="sub">Choose the driver or constructor whose championship path you want to analyze.</div>
+          <div class="toolbar">
+            <div class="field"><label>Championship</label><select id="mathType"><option value="driver">Drivers</option><option value="constructor">Constructors</option></select></div>
+            <div class="field" style="flex:1"><label>Target</label><select id="mathTarget"></select></div>
+          </div>
+          <div class="title-box" id="aliveBox"><div class="label">Mathematical status</div><div class="big" id="aliveStatus">—</div><div id="aliveDetail" class="sub" style="margin:2px 0 0"></div></div>
+          <div class="math-list" id="mathList"></div>
+        </div>
+        <div class="card">
+          <h2>Clinch path</h2><div class="sub">Outright thresholds use one-point margins so the result does not depend on championship countback.</div>
+          <div class="title-box"><div class="label">Earliest theoretical clinch</div><div class="big" id="earliestClinch">—</div><div class="sub" id="earliestDetail" style="margin:2px 0 0"></div></div>
+          <div class="title-box"><div class="label">Conservative guaranteed-title threshold</div><div class="big" id="guaranteePts">—</div><div class="sub" id="guaranteeDetail" style="margin:2px 0 0"></div></div>
+          <div class="explain" id="mathExplain"></div>
+          <div class="warning">Countback note: projected ties are sorted by projected GP wins, then GP podiums, then current position. The official FIA tie-break continues through second places, third places, and so on, so a points tie should be treated as provisional rather than a definitive champion.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="sourcebox card">
+    <b>Live data:</b> The hosted dashboard checks <a href="https://openf1.org/docs/" target="_blank" rel="noreferrer">OpenF1</a> for completed-session results and championship standings on launch and when you tap Refresh. It also checks an optional same-origin <code>data/season-2026.json</code> snapshot generated by the included GitHub Action. If both are unavailable, the app falls back to its built-in September 13 snapshot and clearly labels that state.
+  </div>
+  <div class="footer">Mobile-first browser app • live sync + cached fallback • scenario data stays in your browser unless you export it</div>
+
+  <nav class="bottom-nav" id="bottomNav" aria-label="Primary navigation">
+    <button class="active" data-view="standings"><span class="nav-icon">▤</span><span>Standings</span></button>
+    <button data-view="calendar"><span class="nav-icon">◫</span><span>Calendar</span></button>
+    <button data-view="simulator"><span class="nav-icon">↻</span><span>Simulate</span></button>
+    <button data-view="titlemath"><span class="nav-icon">∑</span><span>Title Math</span></button>
+  </nav>
+
+</div>
+
+<script>
+/* ================================================================
+   F1 2026 LIVE DATA + SCENARIO ENGINE
+   - Built-in fallback snapshot: after 2026 Spanish GP (Madrid)
+   - Same-origin JSON snapshot: ./data/season-2026.json (optional)
+   - Live refresh: OpenF1 historical API after completed sessions
+   ================================================================ */
+const CONFIG = {
+  season: 2026,
+  baselineLabel: 'After 2026 Spanish Grand Prix — Sep 13, 2026',
+  baselineRound: 14,
+  fallbackUpdatedAt: '2026-09-13T19:15:00Z',
+  racePoints: [25,18,15,12,10,8,6,4,2,1],
+  sprintPoints: [8,7,6,5,4,3,2,1],
+  fastestLapPoint: 0,
+  constructorRaceMax: 43,
+  constructorSprintMax: 15,
+  apiBase: 'https://api.openf1.org/v1',
+  requestTimeoutMs: 12000
+};
+
+let DRIVERS = [
+  {id:'ANT',number:12,name:'Kimi Antonelli',team:'Mercedes',points:292,wins:8,podiums:12,active:true},
+  {id:'RUS',number:63,name:'George Russell',team:'Mercedes',points:211,wins:2,podiums:7,active:true},
+  {id:'HAM',number:44,name:'Lewis Hamilton',team:'Ferrari',points:191,wins:1,podiums:5,active:true},
+  {id:'NOR',number:1,name:'Lando Norris',team:'McLaren',points:186,wins:2,podiums:5,active:true},
+  {id:'LEC',number:16,name:'Charles Leclerc',team:'Ferrari',points:167,wins:1,podiums:4,active:true},
+  {id:'VER',number:3,name:'Max Verstappen',team:'Red Bull Racing',points:145,wins:0,podiums:6,active:true},
+  {id:'PIA',number:81,name:'Oscar Piastri',team:'McLaren',points:120,wins:0,podiums:2,active:true},
+  {id:'HAD',number:6,name:'Isack Hadjar',team:'Red Bull Racing',points:71,wins:0,podiums:1,active:false},
+  {id:'LAW',number:30,name:'Liam Lawson',team:'Red Bull Racing',points:59,wins:0,podiums:0,active:true},
+  {id:'GAS',number:10,name:'Pierre Gasly',team:'Alpine',points:41,wins:0,podiums:0,active:true},
+  {id:'LIN',number:41,name:'Arvid Lindblad',team:'Racing Bulls',points:31,wins:0,podiums:0,active:true},
+  {id:'COL',number:43,name:'Franco Colapinto',team:'Alpine',points:27,wins:0,podiums:0,active:true},
+  {id:'BEA',number:87,name:'Oliver Bearman',team:'Haas F1 Team',points:18,wins:0,podiums:0,active:true},
+  {id:'BOR',number:5,name:'Gabriel Bortoleto',team:'Audi',points:10,wins:0,podiums:0,active:true},
+  {id:'HUL',number:27,name:'Nico Hulkenberg',team:'Audi',points:7,wins:0,podiums:0,active:true},
+  {id:'SAI',number:55,name:'Carlos Sainz',team:'Williams',points:6,wins:0,podiums:0,active:true},
+  {id:'ALB',number:23,name:'Alexander Albon',team:'Williams',points:5,wins:0,podiums:0,active:true},
+  {id:'OCO',number:31,name:'Esteban Ocon',team:'Haas F1 Team',points:3,wins:0,podiums:0,active:true},
+  {id:'ALO',number:14,name:'Fernando Alonso',team:'Aston Martin',points:3,wins:0,podiums:0,active:true},
+  {id:'TSU',number:22,name:'Yuki Tsunoda',team:'Racing Bulls',points:1,wins:0,podiums:0,active:true},
+  {id:'STR',number:18,name:'Lance Stroll',team:'Aston Martin',points:0,wins:0,podiums:0,active:true},
+  {id:'BOT',number:77,name:'Valtteri Bottas',team:'Cadillac',points:0,wins:0,podiums:0,active:true},
+  {id:'PER',number:11,name:'Sergio Perez',team:'Cadillac',points:0,wins:0,podiums:0,active:true}
+];
+
+let CONSTRUCTORS = [
+  {name:'Mercedes',points:503,wins:10,podiums:19},
+  {name:'Ferrari',points:358,wins:2,podiums:9},
+  {name:'McLaren',points:306,wins:2,podiums:7},
+  {name:'Red Bull Racing',points:230,wins:0,podiums:7},
+  {name:'Racing Bulls',points:77,wins:0,podiums:0},
+  {name:'Alpine',points:68,wins:0,podiums:0},
+  {name:'Haas F1 Team',points:21,wins:0,podiums:0},
+  {name:'Audi',points:17,wins:0,podiums:0},
+  {name:'Williams',points:11,wins:0,podiums:0},
+  {name:'Aston Martin',points:3,wins:0,podiums:0},
+  {name:'Cadillac',points:0,wins:0,podiums:0}
+];
+
+let CALENDAR = [
+  {round:1,meetingKey:1279,name:'Australian GP',place:'Melbourne',date:'Mar 6–8',completed:true,sprint:false,sprintCompleted:false,podium:['RUS','ANT','LEC']},
+  {round:2,meetingKey:1280,name:'Chinese GP',place:'Shanghai',date:'Mar 13–15',completed:true,sprint:true,sprintCompleted:true,podium:['ANT','RUS','HAM'],sprintWinner:'RUS'},
+  {round:3,meetingKey:1281,name:'Japanese GP',place:'Suzuka',date:'Mar 27–29',completed:true,sprint:false,sprintCompleted:false,podium:['ANT','PIA','LEC']},
+  {round:4,meetingKey:1284,name:'Miami GP',place:'Miami',date:'May 1–3',completed:true,sprint:true,sprintCompleted:true,podium:['ANT','NOR','PIA'],sprintWinner:'NOR'},
+  {round:5,meetingKey:1285,name:'Canadian GP',place:'Montreal',date:'May 22–24',completed:true,sprint:true,sprintCompleted:true,podium:['ANT','HAM','VER'],sprintWinner:'RUS'},
+  {round:6,meetingKey:1286,name:'Monaco GP',place:'Monaco',date:'Jun 5–7',completed:true,sprint:false,sprintCompleted:false,podium:['ANT','HAM','HAD']},
+  {round:7,meetingKey:1287,name:'Barcelona-Catalunya GP',place:'Barcelona',date:'Jun 12–14',completed:true,sprint:false,sprintCompleted:false,podium:['HAM','RUS','NOR']},
+  {round:8,meetingKey:1288,name:'Austrian GP',place:'Spielberg',date:'Jun 26–28',completed:true,sprint:false,sprintCompleted:false,podium:['RUS','VER','ANT']},
+  {round:9,meetingKey:1289,name:'British GP',place:'Silverstone',date:'Jul 3–5',completed:true,sprint:true,sprintCompleted:true,podium:['LEC','RUS','HAM'],sprintWinner:'ANT'},
+  {round:10,meetingKey:1290,name:'Belgian GP',place:'Spa-Francorchamps',date:'Jul 17–19',completed:true,sprint:false,sprintCompleted:false,podium:['ANT','LEC','VER']},
+  {round:11,meetingKey:1291,name:'Hungarian GP',place:'Budapest',date:'Jul 24–26',completed:true,sprint:false,sprintCompleted:false,podium:['NOR','VER','ANT']},
+  {round:12,meetingKey:1292,name:'Dutch GP',place:'Zandvoort',date:'Aug 21–23',completed:true,sprint:true,sprintCompleted:true,podium:['NOR','ANT','RUS'],sprintWinner:'RUS'},
+  {round:13,meetingKey:1293,name:'Italian GP',place:'Monza',date:'Sep 4–6',completed:true,sprint:false,sprintCompleted:false,podium:['ANT','RUS','VER']},
+  {round:14,meetingKey:1294,name:'Spanish GP',place:'Madrid',date:'Sep 11–13',completed:true,sprint:false,sprintCompleted:false,podium:['ANT','VER','NOR']},
+  {round:15,meetingKey:1295,name:'Azerbaijan GP',place:'Baku',date:'Sep 24–26',completed:false,sprint:false,sprintCompleted:false},
+  {round:16,meetingKey:1308,name:'Bahrain GP in Malaysia',place:'Sepang',date:'Oct 2–4',completed:false,sprint:false,sprintCompleted:false},
+  {round:17,meetingKey:1296,name:'Singapore GP',place:'Singapore',date:'Oct 9–11',completed:false,sprint:true,sprintCompleted:false},
+  {round:18,meetingKey:1297,name:'United States GP',place:'Austin',date:'Oct 23–25',completed:false,sprint:false,sprintCompleted:false},
+  {round:19,meetingKey:1298,name:'Mexico City GP',place:'Mexico City',date:'Oct 30–Nov 1',completed:false,sprint:false,sprintCompleted:false},
+  {round:20,meetingKey:1299,name:'Sao Paulo GP',place:'Sao Paulo',date:'Nov 6–8',completed:false,sprint:false,sprintCompleted:false},
+  {round:21,meetingKey:1300,name:'Las Vegas GP',place:'Las Vegas',date:'Nov 19–21',completed:false,sprint:false,sprintCompleted:false},
+  {round:22,meetingKey:1301,name:'Qatar GP',place:'Lusail',date:'Nov 27–29',completed:false,sprint:false,sprintCompleted:false},
+  {round:23,meetingKey:1302,name:'Abu Dhabi GP',place:'Yas Marina',date:'Dec 4–6',completed:false,sprint:false,sprintCompleted:false}
+];
+
+let ACTIVE_DRIVERS = [];
+let REMAINING = [];
+let driverById = {};
+let constructorByName = {};
+function rebuildDerived(){
+  ACTIVE_DRIVERS = DRIVERS.filter(d=>d.active);
+  REMAINING = CALENDAR.filter(r=>!r.completed);
+  driverById = Object.fromEntries(DRIVERS.map(d=>[d.id,d]));
+  constructorByName = Object.fromEntries(CONSTRUCTORS.map(c=>[c.name,c]));
+}
+rebuildDerived();
+
+let liveMeta = {
+  mode:'fallback',
+  source:'Built-in snapshot',
+  updatedAt:CONFIG.fallbackUpdatedAt,
+  baselineLabel:CONFIG.baselineLabel,
+  lastRaceRound:CONFIG.baselineRound,
+  lastRaceName:'Spanish GP',
+  lastSessionName:'Race',
+  error:null
+};
+
+/* Scenario format: scenario[round] = {
+   race:{drivers:{ANT:{pos:1,points:null}}, constructors:{Mercedes:null}},
+   sprint:{drivers:{...}, constructors:{...}}
+} */
+let scenario = {};
+const STORAGE_KEY='f1ScenarioLab2026';
+const LIVE_CACHE_KEY='f1ScenarioLab2026LiveCacheV3';
+function storageGet(key=STORAGE_KEY){try{return window.localStorage.getItem(key)}catch(e){return null}}
+function storageSet(value,key=STORAGE_KEY){try{window.localStorage.setItem(key,value);return true}catch(e){return false}}
+function storageRemove(key=STORAGE_KEY){try{window.localStorage.removeItem(key)}catch(e){}}
+let selectedRound = REMAINING[0]?.round || CALENDAR[CALENDAR.length-1].round;
+let selectedSession = 'race';
+let syncInProgress = false;
+
+function emptySession(){return {drivers:{},constructors:{}}}
+function ensureRound(round){
+  if(!scenario[round]) scenario[round]={race:emptySession(),sprint:emptySession()};
+  if(!scenario[round].race) scenario[round].race=emptySession();
+  if(!scenario[round].sprint) scenario[round].sprint=emptySession();
+  return scenario[round];
+}
+function sessionData(round,session){return ensureRound(round)[session]}
+function driverEntry(round,session,id){
+  const s=sessionData(round,session);
+  if(!s.drivers[id]) s.drivers[id]={pos:null,points:null};
+  return s.drivers[id];
+}
+function pointsForPos(pos,session){
+  const arr=session==='sprint'?CONFIG.sprintPoints:CONFIG.racePoints;
+  return pos && pos<=arr.length ? arr[pos-1] : 0;
+}
+function awardForDriver(round,session,id){
+  const e=driverEntry(round,session,id);
+  if(e.points!==null && e.points!=='' && Number.isFinite(Number(e.points))) return Math.max(0,Number(e.points));
+  return pointsForPos(Number(e.pos),session);
+}
+function hasAnyInput(s){
+  if(!s) return false;
+  return Object.values(s.drivers||{}).some(e=>e && (e.pos || e.points!==null && e.points!=='')) || Object.values(s.constructors||{}).some(v=>v!==null && v!=='');
+}
+function isSessionRemaining(race,session){
+  if(session==='race') return !race.completed;
+  return race.sprint && !race.sprintCompleted;
+}
+
+function getDriverProjection(){
+  return DRIVERS.map((d,baseIndex)=>{
+    let add=0,wins=d.wins,podiums=d.podiums;
+    for(const race of REMAINING){
+      for(const session of ['race','sprint']){
+        if(!isSessionRemaining(race,session)) continue;
+        const e=driverEntry(race.round,session,d.id);
+        add += awardForDriver(race.round,session,d.id);
+        if(session==='race' && e.points===null){
+          if(Number(e.pos)===1) wins++;
+          if(Number(e.pos)>=1 && Number(e.pos)<=3) podiums++;
+        }
+      }
+    }
+    return {...d,projected:d.points+add,added:add,projWins:wins,projPodiums:podiums,baseIndex};
+  }).sort((a,b)=>b.projected-a.projected||b.projWins-a.projWins||b.projPodiums-a.projPodiums||a.baseIndex-b.baseIndex);
+}
+
+function activeTeamDrivers(team){return ACTIVE_DRIVERS.filter(d=>d.team===team)}
+function derivedConstructorSessionPoints(round,session,team){return activeTeamDrivers(team).reduce((sum,d)=>sum+awardForDriver(round,session,d.id),0)}
+function constructorSessionPoints(round,session,team){
+  const s=sessionData(round,session);
+  const override=s.constructors[team];
+  if(override!==null && override!=='' && override!==undefined && Number.isFinite(Number(override))) return Math.max(0,Number(override));
+  return derivedConstructorSessionPoints(round,session,team);
+}
+function getConstructorProjection(){
+  return CONSTRUCTORS.map((c,baseIndex)=>{
+    let add=0,wins=c.wins,podiums=c.podiums;
+    for(const race of REMAINING){
+      for(const session of ['race','sprint']){
+        if(!isSessionRemaining(race,session)) continue;
+        add += constructorSessionPoints(race.round,session,c.name);
+      }
+      if(!race.completed){
+        const over=sessionData(race.round,'race').constructors[c.name];
+        if(over===null||over===''||over===undefined){
+          const teamPositions=activeTeamDrivers(c.name).map(d=>Number(driverEntry(race.round,'race',d.id).pos)).filter(Boolean);
+          if(teamPositions.includes(1)) wins++;
+          podiums += teamPositions.filter(p=>p>=1&&p<=3).length;
+        }
+      }
+    }
+    return {...c,projected:c.points+add,added:add,projWins:wins,projPodiums:podiums,baseIndex};
+  }).sort((a,b)=>b.projected-a.projected||b.projWins-a.projWins||b.projPodiums-a.projPodiums||a.baseIndex-b.baseIndex);
+}
+
+function gapText(points,leader){return points===leader?'LEADER':`+${leader-points}`}
+function deltaText(v){return v?`+${v}`:'—'}
+function esc(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+
+function renderStandings(){
+  const ds=getDriverProjection(), cs=getConstructorProjection();
+  if(!ds.length||!cs.length) return;
+  const dLead=ds[0].projected,cLead=cs[0].projected;
+  document.getElementById('driverTable').innerHTML=`<thead><tr><th>#</th><th>Driver</th><th class="num">Current</th><th class="num">Scenario</th><th class="num">Projected</th><th class="num">Gap</th><th class="num">Wins</th><th class="num">Podiums</th></tr></thead><tbody>${ds.map((d,i)=>`<tr><td class="pos">${i+1}</td><td><div class="entity">${esc(d.name)}${d.active?'':' <span class="team-tag">(inactive)</span>'}</div><div class="team-tag">${esc(d.team)}</div></td><td class="num">${d.points}</td><td class="num delta ${d.added?'up':''}">${deltaText(d.added)}</td><td class="num"><b>${d.projected}</b></td><td class="num ${i===0?'leader':'gap'}">${gapText(d.projected,dLead)}</td><td class="num">${d.projWins}</td><td class="num">${d.projPodiums}</td></tr>`).join('')}</tbody>`;
+  document.getElementById('constructorTable').innerHTML=`<thead><tr><th>#</th><th>Constructor</th><th class="num">Current</th><th class="num">Scenario</th><th class="num">Projected</th><th class="num">Gap</th><th class="num">Wins</th><th class="num">Podiums</th></tr></thead><tbody>${cs.map((c,i)=>`<tr><td class="pos">${i+1}</td><td class="entity">${esc(c.name)}</td><td class="num">${c.points}</td><td class="num delta ${c.added?'up':''}">${deltaText(c.added)}</td><td class="num"><b>${c.projected}</b></td><td class="num ${i===0?'leader':'gap'}">${gapText(c.projected,cLead)}</td><td class="num">${c.projWins}</td><td class="num">${c.projPodiums}</td></tr>`).join('')}</tbody>`;
+  document.getElementById('projDriverLeader').textContent=`${ds[0].name} (${ds[0].projected})`;
+  document.getElementById('projConstructorLeader').textContent=`${cs[0].name} (${cs[0].projected})`;
+}
+
+function renderCalendar(){
+  document.getElementById('calendarGrid').innerHTML=CALENDAR.map(r=>{
+    let res='';
+    if(r.completed&&r.podium?.length){
+      const names=r.podium.map(id=>driverById[id]?.name||id);
+      res=`<div class="result"><b>GP:</b> ${names.map(esc).join(' • ')}</div>`;
+    }
+    if(r.sprint&&r.sprintCompleted&&r.sprintWinner) res+=`<div class="result"><b>Sprint:</b> ${esc(driverById[r.sprintWinner]?.name||r.sprintWinner)} won</div>`;
+    if(!r.completed){
+      const s=scenario[r.round], cnt=(hasAnyInput(s?.race)?1:0)+(r.sprint&&!r.sprintCompleted&&hasAnyInput(s?.sprint)?1:0);
+      if(cnt)res+=`<div class="result"><b>Scenario:</b> ${cnt} session${cnt===1?'':'s'} configured</div>`;
+    }
+    const nowFlag=r.current?'<span class="pill live">Current weekend</span>':'';
+    const sprintFlag=r.sprint?`<span class="pill sprint">Sprint ${r.sprintCompleted?'done':'weekend'}</span>`:'';
+    const stateFlag=r.completed?'<span class="pill done">GP locked</span>':'<span class="pill">Remaining</span>';
+    return `<article class="race ${r.completed?'completed':''} ${r.current?'current':''}"><div class="rnum">Round ${r.round}</div><h3>${esc(r.name)}</h3><div class="date">${esc(r.place)} • ${esc(r.date)}</div>${stateFlag}${sprintFlag}${nowFlag}${res}</article>`;
+  }).join('');
+}
+
+function renderSelectors(){
+  const qd=document.getElementById('quickDriver');
+  const oldDriver=qd.value;
+  qd.innerHTML=ACTIVE_DRIVERS.map(d=>`<option value="${d.id}">${esc(d.name)}</option>`).join('');
+  if([...qd.options].some(o=>o.value===oldDriver)) qd.value=oldDriver;
+  const qc=document.getElementById('quickConstructor');
+  const oldTeam=qc.value;
+  qc.innerHTML=CONSTRUCTORS.map(c=>`<option value="${esc(c.name)}">${esc(c.name)}</option>`).join('');
+  if([...qc.options].some(o=>o.value===oldTeam)) qc.value=oldTeam;
+  const qp=document.getElementById('quickDriverPos');
+  if(!qp.options.length) qp.innerHTML=Array.from({length:22},(_,i)=>`<option value="${i+1}">P${i+1}</option>`).join('');
+  const ev=document.getElementById('eventSelect');
+  const oldRound=Number(ev.value)||selectedRound;
+  ev.innerHTML=REMAINING.map(r=>`<option value="${r.round}">R${r.round} · ${esc(r.name)}</option>`).join('');
+  if(REMAINING.some(r=>r.round===oldRound)) selectedRound=oldRound;
+  else selectedRound=REMAINING[0]?.round || CALENDAR[CALENDAR.length-1].round;
+  if(ev.options.length) ev.value=String(selectedRound);
+}
+
+function setUniquePosition(round,session,id,pos){
+  for(const d of ACTIVE_DRIVERS){
+    if(d.id!==id && String(driverEntry(round,session,d.id).pos)===String(pos)) driverEntry(round,session,d.id).pos=null;
+  }
+  driverEntry(round,session,id).pos=pos?Number(pos):null;
+}
+function buildPositionOptions(max){return `<option value="">—</option>${Array.from({length:max},(_,i)=>`<option value="${i+1}">P${i+1}</option>`).join('')}`}
+
+function renderEditor(){
+  const race=REMAINING.find(r=>r.round===Number(selectedRound));
+  const container=document.getElementById('driverEditor');
+  const overrideBox=document.getElementById('constructorOverrides');
+  if(!race){
+    container.innerHTML='<div class="empty">The season has no remaining Grand Prix sessions to simulate.</div>';
+    overrideBox.innerHTML='';
+    document.getElementById('clearEvent').disabled=true;
+    return;
+  }
+  document.getElementById('clearEvent').disabled=false;
+  if(selectedSession==='sprint' && (!race.sprint||race.sprintCompleted)) selectedSession='race';
+  const sprintTab=document.getElementById('sprintTab');
+  sprintTab.disabled=!race.sprint||race.sprintCompleted;
+  sprintTab.title=race.sprintCompleted?'Sprint result is now actual and locked.':(!race.sprint?'No Sprint at this event.':'');
+  document.querySelectorAll('.session-tab').forEach(b=>b.classList.toggle('active',b.dataset.session===selectedSession));
+  const maxPos=selectedSession==='sprint'?8:22;
+  container.innerHTML=ACTIVE_DRIVERS.map(d=>{
+    const e=driverEntry(race.round,selectedSession,d.id), award=awardForDriver(race.round,selectedSession,d.id);
+    const isManual=e.points!==null&&e.points!=='';
+    return `<div class="driver-row ${isManual?'manual-active':''}" data-driver="${d.id}"><div class="name">${esc(d.name)}<small>${esc(d.team)}</small></div><select class="pos-input" aria-label="${esc(d.name)} finishing position">${buildPositionOptions(maxPos)}</select><input class="pts-input" type="number" min="0" step="1" placeholder="pts" value="${isManual?esc(e.points):''}" aria-label="${esc(d.name)} points override"><div class="award">${award}</div></div>`;
+  }).join('');
+  container.querySelectorAll('.driver-row').forEach(row=>{
+    const id=row.dataset.driver, e=driverEntry(race.round,selectedSession,id);
+    const pos=row.querySelector('.pos-input'); pos.value=e.pos||'';
+    pos.addEventListener('change',ev=>{setUniquePosition(race.round,selectedSession,id,ev.target.value);refreshAll(false);});
+    row.querySelector('.pts-input').addEventListener('input',ev=>{const v=ev.target.value;driverEntry(race.round,selectedSession,id).points=v===''?null:Number(v);refreshAll(false);});
+  });
+  overrideBox.innerHTML=CONSTRUCTORS.map(c=>{const v=sessionData(race.round,selectedSession).constructors[c.name];return `<label class="override-item"><span>${esc(c.name)}</span><input data-team="${esc(c.name)}" type="number" min="0" step="1" placeholder="auto" value="${v!==null&&v!==undefined&&v!==''?esc(v):''}"></label>`}).join('');
+  overrideBox.querySelectorAll('input').forEach(inp=>inp.addEventListener('input',()=>{sessionData(race.round,selectedSession).constructors[inp.dataset.team]=inp.value===''?null:Number(inp.value);refreshAll(false);}));
+  validateEditor();
+}
+
+function validateEditor(){
+  const race=REMAINING.find(r=>r.round===Number(selectedRound));
+  const err=document.getElementById('editorError');
+  if(!race){err.classList.remove('show');return}
+  const positions={}; let dupe=null;
+  for(const d of ACTIVE_DRIVERS){const p=driverEntry(race.round,selectedSession,d.id).pos;if(p){if(positions[p]){dupe=p;break}positions[p]=d.id}}
+  if(dupe){err.textContent=`Duplicate finishing position P${dupe}. Choose a unique position for each driver.`;err.classList.add('show')} else err.classList.remove('show');
+}
+
+function countSessionsWithInputs(){let n=0;for(const r of REMAINING){const x=scenario[r.round];if(hasAnyInput(x?.race))n++;if(r.sprint&&!r.sprintCompleted&&hasAnyInput(x?.sprint))n++;}return n}
+function sessionMax(type,r,session){
+  if(!isSessionRemaining(r,session)) return 0;
+  return session==='race'?(type==='driver'?25:CONFIG.constructorRaceMax):(type==='driver'?8:CONFIG.constructorSprintMax);
+}
+function totalRemainingMax(type){return REMAINING.reduce((sum,r)=>sum+sessionMax(type,r,'race')+sessionMax(type,r,'sprint'),0)}
+function maxAfterIndex(type,index){return REMAINING.slice(index+1).reduce((sum,r)=>sum+sessionMax(type,r,'race')+sessionMax(type,r,'sprint'),0)}
+function maxAtEvent(type,r){return sessionMax(type,r,'race')+sessionMax(type,r,'sprint')}
+
+function renderMathTargets(){
+  const type=document.getElementById('mathType').value;
+  const sel=document.getElementById('mathTarget');
+  const prev=sel.value;
+  const arr=type==='driver'?DRIVERS:CONSTRUCTORS;
+  sel.innerHTML=arr.map(x=>`<option value="${type==='driver'?x.id:esc(x.name)}">${esc(x.name)}${type==='driver'&&!x.active?' (inactive)':''}</option>`).join('');
+  if([...sel.options].some(o=>o.value===prev))sel.value=prev;
+}
+function getBaseEntity(type,key){return type==='driver'?DRIVERS.find(d=>d.id===key):CONSTRUCTORS.find(c=>c.name===key)}
+function getProjectedEntity(type,key){return (type==='driver'?getDriverProjection():getConstructorProjection()).find(x=>(type==='driver'?x.id:x.name)===key)}
+
+function earliestTheoreticalClinch(type,target){
+  const all=type==='driver'?DRIVERS:CONSTRUCTORS;
+  const key=x=>type==='driver'?x.id:x.name;
+  let tPts=target.points;
+  for(let i=0;i<REMAINING.length;i++){
+    tPts+=maxAtEvent(type,REMAINING[i]);
+    const future=maxAfterIndex(type,i);
+    const rivals=all.filter(x=>key(x)!==key(target));
+    const bestRival=rivals.length?Math.max(...rivals.map(x=>x.points+future)):0;
+    if(tPts>bestRival) return {race:REMAINING[i],targetPoints:tPts,bestRival};
+  }
+  return null;
+}
+
+function renderTitleMath(){
+  const type=document.getElementById('mathType').value, key=document.getElementById('mathTarget').value;
+  if(!key)return;
+  const target=getBaseEntity(type,key), projected=getProjectedEntity(type,key); if(!target||!projected)return;
+  const all=type==='driver'?DRIVERS:CONSTRUCTORS, maxRemain=totalRemainingMax(type);
+  const baseLeader=[...all].sort((a,b)=>b.points-a.points)[0];
+  const rivals=all.filter(x=>x!==target);
+  const rivalMax=rivals.length?Math.max(...rivals.map(x=>x.points+maxRemain)):0;
+  const maxFinal=target.points+maxRemain;
+  const alive=maxFinal>=baseLeader.points;
+  const leaderGap=Math.max(0,baseLeader.points-target.points);
+  const netNeeded=target===baseLeader?0:leaderGap+1;
+  const projectedLeader=(type==='driver'?getDriverProjection():getConstructorProjection())[0];
+  const earliest=target.active===false&&type==='driver'?null:earliestTheoreticalClinch(type,target);
+  const guaranteeThreshold=rivalMax+1;
+  const requiredAdd=Math.max(0,guaranteeThreshold-target.points);
+  const rivalDrop=Math.max(0,requiredAdd-maxRemain);
+  const box=document.getElementById('aliveBox'); box.classList.toggle('good',alive);box.classList.toggle('bad',!alive);
+  document.getElementById('aliveStatus').textContent=alive?'ALIVE':'ELIMINATED';
+  document.getElementById('aliveDetail').textContent=alive?`Maximum possible final score: ${maxFinal}`:`Even a perfect remaining score reaches only ${maxFinal}.`;
+  document.getElementById('mathList').innerHTML=`
+    <div class="math-row"><span>Current points</span><b>${target.points}</b></div>
+    <div class="math-row"><span>Current gap to leader</span><b>${target===baseLeader?'LEADER':`-${leaderGap}`}</b></div>
+    <div class="math-row"><span>Points still available</span><b>${maxRemain}</b></div>
+    <div class="math-row"><span>Maximum final score</span><b>${maxFinal}</b></div>
+    <div class="math-row"><span>Net gain needed to finish one point ahead of current leader</span><b>${netNeeded}</b></div>
+    <div class="math-row"><span>Scenario projection</span><b>${projected.projected}</b></div>
+    <div class="math-row"><span>Scenario championship leader</span><b>${esc(projectedLeader.name)} (${projectedLeader.projected})</b></div>`;
+  if(earliest){
+    document.getElementById('earliestClinch').textContent=`Round ${earliest.race.round}`;
+    document.getElementById('earliestDetail').textContent=`${earliest.race.name}, ${earliest.race.date}. Best-case mathematical earliest round, assuming the target maximizes points and rivals score as little as necessary.`;
+  }else{
+    document.getElementById('earliestClinch').textContent='Not available';
+    document.getElementById('earliestDetail').textContent=target.active===false?'Inactive drivers cannot add future points in this simulator.':'No outright clinch is possible before season end under the maximum-points model.';
+  }
+  document.getElementById('guaranteePts').textContent=guaranteeThreshold;
+  document.getElementById('guaranteeDetail').textContent=requiredAdd<=maxRemain?`${target.name} would need ${requiredAdd} more points to exceed the strongest rival's theoretical maximum by one.`:`A perfect score is ${requiredAdd-maxRemain} points short of this conservative guarantee threshold, so a rival must drop at least ${rivalDrop} theoretical points.`;
+  document.getElementById('mathExplain').innerHTML=`<b>How to read this:</b> The “guaranteed” threshold is deliberately conservative. It asks how many points ${esc(target.name)} would need to finish one point above the highest total any rival could theoretically reach if that rival collected every available point. Real finishing positions are mutually exclusive, so many actual clinch paths require fewer points. The race-by-race simulator lets you test those specific paths directly.`;
+}
+
+function refreshSummaryMetrics(){
+  const completed=CALENDAR.filter(r=>r.completed).length;
+  const remaining=CALENDAR.length-completed;
+  const sprintRemaining=CALENDAR.filter(r=>r.sprint&&!r.sprintCompleted).length;
+  document.getElementById('completedCount').textContent=completed;
+  document.getElementById('remainingCount').textContent=remaining;
+  document.getElementById('remainingSprintCount').textContent=sprintRemaining;
+  document.getElementById('maxDriverPts').textContent=totalRemainingMax('driver');
+  const baseline=document.getElementById('baselineEyebrow');
+  if(baseline) baseline.textContent=`${liveMeta.mode==='live'?'Live data':'Cached baseline'} • ${liveMeta.baselineLabel}`;
+  const hero=document.getElementById('heroCopy');
+  if(hero) hero.textContent=`Actual championship data is locked through ${liveMeta.lastRaceName || 'the latest completed race'}. Simulate every remaining round${sprintRemaining?`, including ${sprintRemaining} remaining Sprint${sprintRemaining===1?'':'s'}`:''}, and the projections recalculate instantly.`;
+}
+
+function formatLocalTimestamp(iso){
+  if(!iso)return 'unknown';
+  const d=new Date(iso); if(Number.isNaN(d.getTime()))return 'unknown';
+  return d.toLocaleString(undefined,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
+}
+function setLiveStatus(mode,title,detail){
+  liveMeta.mode=mode;
+  const bar=document.getElementById('liveStatusBar');
+  const dot=document.getElementById('liveDot');
+  const t=document.getElementById('liveStatusTitle');
+  const d=document.getElementById('liveStatusDetail');
+  if(bar) bar.dataset.state=mode;
+  if(dot) dot.className=`live-dot ${mode}`;
+  if(t) t.textContent=title;
+  if(d) d.textContent=detail;
+  const btn=document.getElementById('refreshLiveBtn');
+  if(btn){btn.disabled=syncInProgress;btn.textContent=syncInProgress?'Refreshing…':'Refresh F1 data';}
+  const heroBtn=document.getElementById('refreshLiveBtnHero');
+  if(heroBtn){heroBtn.disabled=syncInProgress;heroBtn.textContent=syncInProgress?'Refreshing…':'Refresh';}
+}
+function updateLiveStatusFromMeta(){
+  if(liveMeta.mode==='live') setLiveStatus('live',`Live through ${liveMeta.lastRaceName}`,`Synced ${formatLocalTimestamp(liveMeta.updatedAt)} from OpenF1.`);
+  else if(liveMeta.mode==='cache') setLiveStatus('cache',`Cached through ${liveMeta.lastRaceName}`,`Using saved data from ${formatLocalTimestamp(liveMeta.updatedAt)}. Tap refresh to try live data.`);
+  else if(liveMeta.mode==='error') setLiveStatus('error',`Offline fallback through ${liveMeta.lastRaceName}`,liveMeta.error||'Live refresh unavailable; simulations still work.');
+  else setLiveStatus('cache',`Built-in snapshot through ${liveMeta.lastRaceName}`,`Fallback snapshot dated ${formatLocalTimestamp(liveMeta.updatedAt)}. Live refresh runs automatically when hosted over HTTPS.`);
+}
+
+function refreshAll(){
+  rebuildDerived();
+  renderSelectors();
+  renderStandings();
+  renderCalendar();
+  renderMathTargets();
+  document.getElementById('sessionCount').textContent=countSessionsWithInputs();
+  renderTitleMath();
+  renderEditor();
+  refreshSummaryMetrics();
+  updateLiveStatusFromMeta();
+}
+
+// Main navigation — desktop tabs and iPhone bottom navigation share one state.
+function switchView(view){
+  document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
+  document.querySelectorAll('#bottomNav button').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  const target=document.getElementById(`view-${view}`);if(target)target.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function canonicalTeam(name){
+  const n=String(name||'').trim();
+  const aliases={'Red Bull':'Red Bull Racing','Haas':'Haas F1 Team','McLaren Mercedes':'McLaren','Aston Martin Aramco':'Aston Martin'};
+  return aliases[n]||n;
+}
+function driverIdFromRecord(rec,numberMap){
+  const acronym=String(rec?.name_acronym||'').trim().toUpperCase();
+  if(acronym) return acronym;
+  return numberMap[Number(rec?.driver_number)]?.id || null;
+}
+function shortMeetingName(name,location){
+  let n=String(name||'').replace(/ Grand Prix/i,' GP');
+  if(/Bahrain/i.test(n)&&/Kuala Lumpur|Sepang/i.test(location||'')) n='Bahrain GP in Malaysia';
+  if(n==='Barcelona GP') n='Barcelona-Catalunya GP';
+  return n;
+}
+function localDateFromIso(iso,offset){
+  const d=new Date(iso); if(Number.isNaN(d.getTime())) return null;
+  const m=String(offset||'00:00:00').match(/^([+-]?)(\d{2}):(\d{2}):(\d{2})$/);
+  const mins=m?((m[1]==='-'?-1:1)*(Number(m[2])*60+Number(m[3]))):0;
+  return new Date(d.getTime()+mins*60000);
+}
+function formatMeetingDates(m){
+  const a=localDateFromIso(m.date_start,m.gmt_offset), b=localDateFromIso(m.date_end,m.gmt_offset);
+  if(!a||!b)return '';
+  const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const am=months[a.getUTCMonth()], bm=months[b.getUTCMonth()];
+  return am===bm?`${am} ${a.getUTCDate()}–${b.getUTCDate()}`:`${am} ${a.getUTCDate()}–${bm} ${b.getUTCDate()}`;
+}
+function isGpMeeting(m){return !m.is_cancelled && /Grand Prix/i.test(String(m.meeting_name||'')) && !/Testing/i.test(String(m.meeting_name||''))}
+function isSprintSession(s){return String(s.session_name||'').toLowerCase()==='sprint'}
+function isRaceSession(s){return String(s.session_name||'').toLowerCase()==='race'}
+
+async function fetchJson(url,{timeout=CONFIG.requestTimeoutMs}={}){
+  const ctrl=new AbortController();
+  const timer=setTimeout(()=>ctrl.abort(),timeout);
+  try{
+    const res=await fetch(url,{headers:{'Accept':'application/json'},cache:'no-store',signal:ctrl.signal});
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.json();
+  }finally{clearTimeout(timer)}
+}
+function api(path){return `${CONFIG.apiBase}/${path}`}
+
+function snapshotPayload(){
+  return {
+    schemaVersion:3,
+    season:CONFIG.season,
+    updatedAt:liveMeta.updatedAt,
+    baselineLabel:liveMeta.baselineLabel,
+    lastRaceRound:liveMeta.lastRaceRound,
+    lastRaceName:liveMeta.lastRaceName,
+    lastSessionName:liveMeta.lastSessionName,
+    drivers:DRIVERS,
+    constructors:CONSTRUCTORS,
+    calendar:CALENDAR
+  };
+}
+function applySnapshot(snap,mode='cache'){
+  if(!snap||Number(snap.season)!==CONFIG.season||!Array.isArray(snap.drivers)||!Array.isArray(snap.constructors)||!Array.isArray(snap.calendar)) return false;
+  DRIVERS=snap.drivers.map(x=>({...x,number:Number(x.number)}));
+  CONSTRUCTORS=snap.constructors.map(x=>({...x}));
+  CALENDAR=snap.calendar.map(x=>({...x,round:Number(x.round),meetingKey:Number(x.meetingKey),completed:!!x.completed,sprint:!!x.sprint,sprintCompleted:!!x.sprintCompleted}));
+  CONFIG.baselineLabel=snap.baselineLabel||CONFIG.baselineLabel;
+  liveMeta={
+    mode,
+    source:mode==='live'?'OpenF1':'Cached snapshot',
+    updatedAt:snap.updatedAt||new Date().toISOString(),
+    baselineLabel:snap.baselineLabel||CONFIG.baselineLabel,
+    lastRaceRound:Number(snap.lastRaceRound)||Math.max(0,...CALENDAR.filter(r=>r.completed).map(r=>r.round)),
+    lastRaceName:snap.lastRaceName||CALENDAR.filter(r=>r.completed).slice(-1)[0]?.name||'latest race',
+    lastSessionName:snap.lastSessionName||'Race',
+    error:null
+  };
+  rebuildDerived();
+  migrateScenarioToActual();
+  return true;
+}
+function migrateScenarioToActual(){
+  for(const r of CALENDAR){
+    if(r.completed){delete scenario[r.round];continue;}
+    if(r.sprintCompleted && scenario[r.round]?.sprint) scenario[r.round].sprint=emptySession();
+  }
+  rebuildDerived();
+  if(!REMAINING.some(r=>r.round===selectedRound)) selectedRound=REMAINING[0]?.round||selectedRound;
+  const selectedRace=REMAINING.find(r=>r.round===selectedRound);
+  if(selectedSession==='sprint' && (!selectedRace?.sprint||selectedRace?.sprintCompleted)) selectedSession='race';
+}
+
+async function loadHostedSnapshot(){
+  try{
+    const snap=await fetchJson(`./data/season-${CONFIG.season}.json?ts=${Date.now()}`,{timeout:5000});
+    const currentTime=Date.parse(liveMeta.updatedAt||0)||0, candidate=Date.parse(snap.updatedAt||0)||0;
+    if(candidate>currentTime && applySnapshot(snap,'cache')){
+      storageSet(JSON.stringify(snap),LIVE_CACHE_KEY);
+      refreshAll();
+      return true;
+    }
+  }catch(e){}
+  return false;
+}
+
+async function fetchRaceBundle(raceSession,numberMap){
+  const [results,roster]=await Promise.all([
+    fetchJson(api(`session_result?session_key=${encodeURIComponent(raceSession.session_key)}`)),
+    fetchJson(api(`drivers?session_key=${encodeURIComponent(raceSession.session_key)}`))
+  ]);
+  const rosterByNumber=Object.fromEntries(roster.map(x=>[Number(x.driver_number),x]));
+  const podium=results.filter(x=>Number(x.position)>=1&&Number(x.position)<=3).sort((a,b)=>a.position-b.position).map(x=>driverIdFromRecord(rosterByNumber[Number(x.driver_number)]||x,numberMap)).filter(Boolean);
+  return {results,roster,rosterByNumber,podium};
+}
+
+async function findLatestOfficialRace(completedRaceSessions){
+  for(const raceSession of [...completedRaceSessions].sort((a,b)=>Date.parse(b.date_end)-Date.parse(a.date_end)).slice(0,4)){
+    try{
+      const [dc,tc,sr]=await Promise.all([
+        fetchJson(api(`championship_drivers?session_key=${encodeURIComponent(raceSession.session_key)}`)),
+        fetchJson(api(`championship_teams?session_key=${encodeURIComponent(raceSession.session_key)}`)),
+        fetchJson(api(`session_result?session_key=${encodeURIComponent(raceSession.session_key)}&position<=3`))
+      ]);
+      if(Array.isArray(dc)&&dc.length&&Array.isArray(tc)&&tc.length&&Array.isArray(sr)&&sr.length) return {raceSession,driverChamp:dc,teamChamp:tc};
+    }catch(e){}
+  }
+  throw new Error('The newest race has not been published to the historical standings feed yet.');
+}
+
+function updatePointsFromChampionship(driverChamp,teamChamp,roster){
+  const existingByNumber=Object.fromEntries(DRIVERS.map(d=>[Number(d.number),d]));
+  const rosterByNumber=Object.fromEntries((roster||[]).map(x=>[Number(x.driver_number),x]));
+  for(const d of DRIVERS) d.active=false;
+  for(const row of driverChamp){
+    const n=Number(row.driver_number), existing=existingByNumber[n], rr=rosterByNumber[n];
+    if(!existing) continue;
+    existing.points=Number(row.points_current)||0;
+    if(rr){
+      existing.id=String(rr.name_acronym||existing.id).toUpperCase();
+      existing.name=String(rr.full_name||`${rr.first_name||''} ${rr.last_name||''}`).trim().replace(/\s+/g,' ')||existing.name;
+      existing.team=canonicalTeam(rr.team_name)||existing.team;
+    }
+  }
+  for(const rr of roster||[]){
+    const existing=existingByNumber[Number(rr.driver_number)];
+    if(existing){existing.active=true;existing.team=canonicalTeam(rr.team_name)||existing.team;}
+  }
+  const byTeam=Object.fromEntries(CONSTRUCTORS.map(c=>[canonicalTeam(c.name),c]));
+  for(const row of teamChamp){const name=canonicalTeam(row.team_name);if(byTeam[name])byTeam[name].points=Number(row.points_current)||0;}
+}
+
+async function syncLiveData({manual=false}={}){
+  if(syncInProgress)return;
+  syncInProgress=true;
+  setLiveStatus('syncing','Refreshing F1 data…','Checking the latest completed sessions and championship standings.');
+  try{
+    const now=Date.now();
+    const [meetings,sessions]=await Promise.all([
+      fetchJson(api(`meetings?year=${CONFIG.season}`)),
+      fetchJson(api(`sessions?year=${CONFIG.season}`))
+    ]);
+    const gpMeetings=meetings.filter(isGpMeeting).sort((a,b)=>Date.parse(a.date_start)-Date.parse(b.date_start));
+    const meetingRound=Object.fromEntries(gpMeetings.map((m,i)=>[Number(m.meeting_key),i+1]));
+    const gpMeetingSet=new Set(gpMeetings.map(m=>Number(m.meeting_key)));
+    const relevantSessions=sessions.filter(s=>gpMeetingSet.has(Number(s.meeting_key)));
+    const raceSessions=relevantSessions.filter(isRaceSession);
+    const sprintSessions=relevantSessions.filter(isSprintSession);
+    const completedRaceSessions=raceSessions.filter(s=>s.date_end&&Date.parse(s.date_end)<=now);
+    const official=await findLatestOfficialRace(completedRaceSessions);
+    const officialRound=meetingRound[Number(official.raceSession.meeting_key)];
+    if(!officialRound) throw new Error('Could not map the latest race to the 2026 calendar.');
+
+    // The most recent completed session gives us the latest known active driver/team roster.
+    const completedSessions=relevantSessions.filter(s=>s.date_end&&Date.parse(s.date_end)<=now).sort((a,b)=>Date.parse(b.date_end)-Date.parse(a.date_end));
+    let latestRoster=[];
+    for(const s of completedSessions.slice(0,5)){
+      try{const r=await fetchJson(api(`drivers?session_key=${encodeURIComponent(s.session_key)}`));if(Array.isArray(r)&&r.length){latestRoster=r;break}}catch(e){}
+    }
+    if(!latestRoster.length) latestRoster=await fetchJson(api(`drivers?session_key=${encodeURIComponent(official.raceSession.session_key)}`));
+
+    const oldCalendarByMeeting=Object.fromEntries(CALENDAR.map(r=>[Number(r.meetingKey),r]));
+    const numberMap=Object.fromEntries(DRIVERS.map(d=>[Number(d.number),d]));
+    const oldCompletedMax=Math.max(0,...CALENDAR.filter(r=>r.completed).map(r=>r.round));
+
+    // Build the current official/revised calendar from OpenF1 meetings + session schedule.
+    const nextCalendar=gpMeetings.map((m,i)=>{
+      const round=i+1, old=oldCalendarByMeeting[Number(m.meeting_key)]||CALENDAR.find(r=>r.round===round)||{};
+      const rs=raceSessions.find(s=>Number(s.meeting_key)===Number(m.meeting_key));
+      const ss=sprintSessions.find(s=>Number(s.meeting_key)===Number(m.meeting_key));
+      const sprintCompleted=!!ss && !!ss.date_end && Date.parse(ss.date_end)<=now && round<=Math.max(officialRound,round);
+      const current=Date.parse(m.date_start)<=now && Date.parse(m.date_end)>=now;
+      return {
+        ...old,
+        round,
+        meetingKey:Number(m.meeting_key),
+        name:shortMeetingName(m.meeting_name,m.location),
+        place:(/Kuala Lumpur/i.test(m.location||'')&&/Bahrain/i.test(m.meeting_name||''))?'Sepang':String(m.location||old.place||''),
+        date:formatMeetingDates(m)||old.date||'',
+        completed:round<=officialRound,
+        sprint:!!ss || !!old.sprint,
+        sprintCompleted:round<officialRound ? (!!ss||!!old.sprintCompleted) : (round===officialRound?!!ss:(!!ss&&Date.parse(ss.date_end)<=now)),
+        current
+      };
+    });
+
+    // Update championship points first; GP wins/podiums stay from the snapshot and are incremented only for newly locked races.
+    updatePointsFromChampionship(official.driverChamp,official.teamChamp,latestRoster);
+
+    // Add new GP result details, wins and podiums since the last cached/built-in snapshot.
+    for(const r of nextCalendar.filter(x=>x.completed&&x.round>oldCompletedMax)){
+      const rs=raceSessions.find(s=>Number(s.meeting_key)===Number(r.meetingKey));
+      if(!rs) continue;
+      try{
+        const bundle=await fetchRaceBundle(rs,numberMap);
+        r.podium=bundle.podium;
+        for(const [idx,id] of bundle.podium.entries()){
+          const d=DRIVERS.find(x=>x.id===id); if(d){if(idx===0)d.wins=(d.wins||0)+1;d.podiums=(d.podiums||0)+1;}
+          const row=bundle.results.find(x=>driverIdFromRecord(bundle.rosterByNumber[Number(x.driver_number)]||x,numberMap)===id);
+          const team=canonicalTeam(bundle.rosterByNumber[Number(row?.driver_number)]?.team_name || d?.team);
+          const c=CONSTRUCTORS.find(x=>canonicalTeam(x.name)===team); if(c){if(idx===0)c.wins=(c.wins||0)+1;c.podiums=(c.podiums||0)+1;}
+        }
+      }catch(e){}
+    }
+
+    // Populate actual Sprint winners and, if a Sprint has happened after the latest GP baseline, add its points now.
+    const currentSprintCandidates=sprintSessions.filter(s=>s.date_end&&Date.parse(s.date_end)<=now).sort((a,b)=>Date.parse(a.date_end)-Date.parse(b.date_end));
+    for(const ss of currentSprintCandidates){
+      const round=meetingRound[Number(ss.meeting_key)], r=nextCalendar.find(x=>x.round===round); if(!r)continue;
+      let results=[]; let roster=[];
+      const old=oldCalendarByMeeting[Number(ss.meeting_key)];
+      if(old?.sprintWinner && old?.sprintCompleted){r.sprintWinner=old.sprintWinner;r.sprintCompleted=true;continue;}
+      try{
+        [results,roster]=await Promise.all([fetchJson(api(`session_result?session_key=${encodeURIComponent(ss.session_key)}`)),fetchJson(api(`drivers?session_key=${encodeURIComponent(ss.session_key)}`))]);
+        const rb=Object.fromEntries(roster.map(x=>[Number(x.driver_number),x]));
+        const winner=results.find(x=>Number(x.position)===1);
+        if(winner){r.sprintWinner=driverIdFromRecord(rb[Number(winner.driver_number)]||winner,numberMap);r.sprintCompleted=true;}
+        if(round>officialRound){
+          for(const result of results){
+            const pos=Number(result.position), pts=pointsForPos(pos,'sprint'); if(!pts)continue;
+            const rr=rb[Number(result.driver_number)], id=driverIdFromRecord(rr||result,numberMap), d=DRIVERS.find(x=>x.id===id);
+            if(d)d.points+=pts;
+            const team=canonicalTeam(rr?.team_name||d?.team), c=CONSTRUCTORS.find(x=>canonicalTeam(x.name)===team); if(c)c.points+=pts;
+          }
+        }
+      }catch(e){}
+    }
+
+    CALENDAR=nextCalendar;
+    const officialMeeting=gpMeetings.find(m=>Number(m.meeting_key)===Number(official.raceSession.meeting_key));
+    const lastRaceName=shortMeetingName(officialMeeting?.meeting_name,officialMeeting?.location)||`Round ${officialRound}`;
+    const latestCompletedSprint=nextCalendar.filter(r=>r.sprintCompleted&&!r.completed).sort((a,b)=>b.round-a.round)[0];
+    const baselineLabel=latestCompletedSprint?`After ${latestCompletedSprint.name} Sprint`:`After ${lastRaceName}`;
+    CONFIG.baselineLabel=baselineLabel;
+    liveMeta={mode:'live',source:'OpenF1',updatedAt:new Date().toISOString(),baselineLabel,lastRaceRound:officialRound,lastRaceName,lastSessionName:latestCompletedSprint?'Sprint':'Race',error:null};
+    rebuildDerived();
+    migrateScenarioToActual();
+    const snap=snapshotPayload();
+    storageSet(JSON.stringify(snap),LIVE_CACHE_KEY);
+    refreshAll();
+  }catch(err){
+    liveMeta.error=(err&&err.message)||'Live refresh failed.';
+    liveMeta.mode=liveMeta.source==='Built-in snapshot'?'error':'cache';
+    updateLiveStatusFromMeta();
+    if(manual) console.warn('F1 live refresh failed:',err);
+  }finally{
+    syncInProgress=false;
+    updateLiveStatusFromMeta();
+  }
+}
+
+// Event listeners
+for(const btn of document.querySelectorAll('.tab')) btn.addEventListener('click',()=>switchView(btn.dataset.view));
+for(const btn of document.querySelectorAll('#bottomNav button')) btn.addEventListener('click',()=>switchView(btn.dataset.view));
+document.getElementById('eventSelect').addEventListener('change',e=>{selectedRound=Number(e.target.value);selectedSession='race';renderEditor();});
+for(const btn of document.querySelectorAll('.session-tab')) btn.addEventListener('click',()=>{if(!btn.disabled){selectedSession=btn.dataset.session;renderEditor();}});
+document.getElementById('clearEvent').addEventListener('click',()=>{scenario[selectedRound]={race:emptySession(),sprint:emptySession()};refreshAll();});
+document.getElementById('clearConstructorOverrides').addEventListener('click',()=>{sessionData(selectedRound,selectedSession).constructors={};refreshAll();});
+document.getElementById('applyDriverQuick').addEventListener('click',()=>{
+  const id=document.getElementById('quickDriver').value,pos=Number(document.getElementById('quickDriverPos').value),sprint=document.getElementById('quickSprint').checked;
+  for(const r of REMAINING){
+    setUniquePosition(r.round,'race',id,pos);driverEntry(r.round,'race',id).points=null;
+    if(r.sprint&&!r.sprintCompleted&&sprint&&pos<=8){setUniquePosition(r.round,'sprint',id,pos);driverEntry(r.round,'sprint',id).points=null;}
+  }
+  refreshAll();
+});
+document.getElementById('applyConstructorSweep').addEventListener('click',()=>{
+  const team=document.getElementById('quickConstructor').value, ds=activeTeamDrivers(team);if(ds.length<2)return;
+  for(const r of REMAINING){
+    setUniquePosition(r.round,'race',ds[0].id,1);setUniquePosition(r.round,'race',ds[1].id,2);driverEntry(r.round,'race',ds[0].id).points=null;driverEntry(r.round,'race',ds[1].id).points=null;
+    if(r.sprint&&!r.sprintCompleted){setUniquePosition(r.round,'sprint',ds[0].id,1);setUniquePosition(r.round,'sprint',ds[1].id,2);driverEntry(r.round,'sprint',ds[0].id).points=null;driverEntry(r.round,'sprint',ds[1].id).points=null;}
+  }
+  refreshAll();
+});
+document.getElementById('mathType').addEventListener('change',()=>{renderMathTargets();renderTitleMath();});
+document.getElementById('mathTarget').addEventListener('change',renderTitleMath);
+document.getElementById('resetBtn').addEventListener('click',()=>{if(confirm('Clear the entire simulation?')){scenario={};storageRemove();refreshAll();}});
+document.getElementById('saveBtn').addEventListener('click',()=>{const ok=storageSet(JSON.stringify(scenario));const b=document.getElementById('saveBtn');const old=b.textContent;b.textContent=ok?'Saved':'Storage unavailable';setTimeout(()=>b.textContent=old,1200);});
+document.getElementById('exportBtn').addEventListener('click',()=>{
+  const payload={app:'F1 Scenario Lab',season:CONFIG.season,baseline:liveMeta.baselineLabel,exported:new Date().toISOString(),scenario};
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='f1-2026-scenario.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),500);
+});
+document.getElementById('importBtn').addEventListener('click',()=>document.getElementById('importFile').click());
+document.getElementById('importFile').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const x=JSON.parse(await f.text());scenario=x.scenario||x;migrateScenarioToActual();refreshAll();}catch(err){alert('That file is not a valid scenario JSON file.');}e.target.value='';});
+document.getElementById('refreshLiveBtn').addEventListener('click',()=>syncLiveData({manual:true}));
+document.getElementById('refreshLiveBtnHero').addEventListener('click',()=>syncLiveData({manual:true}));
+
+// Initial state: scenario -> cached live snapshot -> bundled snapshot -> direct OpenF1 refresh.
+const saved=storageGet();if(saved){try{scenario=JSON.parse(saved)||{}}catch(e){scenario={}}}
+const cached=storageGet(LIVE_CACHE_KEY);if(cached){try{const s=JSON.parse(cached);if((Date.parse(s.updatedAt||0)||0)>(Date.parse(CONFIG.fallbackUpdatedAt)||0))applySnapshot(s,'cache')}catch(e){}}
+migrateScenarioToActual();
+refreshAll();
+(async()=>{await loadHostedSnapshot();await syncLiveData();})();
+
+</script>
+</body>
+</html>
