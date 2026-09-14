@@ -42,7 +42,7 @@
   .constructor-overrides{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}.override-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}.override-item{display:flex;gap:6px;align-items:center;background:#0d1017;border:1px solid var(--line);border-radius:9px;padding:6px 8px}.override-item span{font-size:11px;flex:1}.override-item input{width:58px;background:#171b24;color:#fff;border:1px solid #303644;border-radius:7px;padding:5px}
   .analysis-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:16px}.title-box{border:1px solid var(--line);background:var(--panel2);border-radius:14px;padding:15px;margin-top:10px}.title-box .big{font-size:34px;font-weight:950;letter-spacing:-.04em}.title-box .label{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:850}.title-box.good{border-color:rgba(41,209,125,.45)}.title-box.bad{border-color:rgba(255,93,103,.45)}
   .math-list{display:grid;gap:9px;margin-top:12px}.math-row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(255,255,255,.06);padding-bottom:8px;font-size:13px}.math-row span:first-child{color:var(--muted)}.explain{margin-top:12px;color:#c7cdd8;font-size:12px;line-height:1.6}
-  .livebar{grid-column:1/-1;display:flex;align-items:center;gap:10px;padding:11px 12px;border:1px solid var(--line);border-radius:13px;background:#0c0f15;min-width:0}.livebar .live-copy{min-width:0;flex:1}.livebar b{font-size:12px;display:block}.livebar small{display:block;color:var(--muted);font-size:10px;margin-top:1px;white-space:normal}.live-dot{width:10px;height:10px;border-radius:50%;flex:0 0 auto;background:var(--muted);box-shadow:0 0 0 4px rgba(156,165,181,.08)}.live-dot.live{background:var(--green);box-shadow:0 0 0 4px rgba(41,209,125,.10)}.live-dot.cache{background:var(--amber);box-shadow:0 0 0 4px rgba(255,194,71,.10)}.live-dot.error{background:var(--danger);box-shadow:0 0 0 4px rgba(255,93,103,.10)}.live-dot.syncing{background:var(--blue);box-shadow:0 0 0 4px rgba(85,169,255,.10);animation:pulseLive 1s ease-in-out infinite}.livebar .btn{padding:7px 9px;font-size:11px;white-space:nowrap}@keyframes pulseLive{50%{opacity:.38}}
+  .livebar{grid-column:1/-1;display:flex;align-items:center;gap:10px;padding:11px 12px;border:1px solid var(--line);border-radius:13px;background:#0c0f15;min-width:0}.livebar .live-copy{min-width:0;flex:1}.livebar b{font-size:12px;display:block}.livebar small{display:block;color:var(--muted);font-size:10px;margin-top:1px;white-space:normal}.live-dot{width:10px;height:10px;border-radius:50%;flex:0 0 auto;background:var(--muted);box-shadow:0 0 0 4px rgba(156,165,181,.08)}.live-dot.live{background:var(--green);box-shadow:0 0 0 4px rgba(41,209,125,.10)}.live-dot.cache{background:var(--amber);box-shadow:0 0 0 4px rgba(255,194,71,.10)}.live-dot.pending{background:var(--amber);box-shadow:0 0 0 4px rgba(255,194,71,.14)}.live-dot.error{background:var(--danger);box-shadow:0 0 0 4px rgba(255,93,103,.10)}.live-dot.syncing{background:var(--blue);box-shadow:0 0 0 4px rgba(85,169,255,.10);animation:pulseLive 1s ease-in-out infinite}.livebar .btn{padding:7px 9px;font-size:11px;white-space:nowrap}@keyframes pulseLive{50%{opacity:.38}}
   .sourcebox{font-size:11px;color:var(--muted);margin-top:16px;border-top:1px solid var(--line);padding-top:12px}.sourcebox a{color:#cfd5df}.warning{padding:10px 12px;border:1px solid rgba(255,194,71,.38);background:rgba(255,194,71,.08);border-radius:10px;color:#f6d98d;font-size:11px;margin:10px 0}.error{padding:8px 10px;border:1px solid rgba(255,93,103,.45);background:rgba(255,93,103,.08);border-radius:9px;color:#ffadb2;font-size:11px;display:none}.error.show{display:block}
   .empty{color:var(--muted);padding:16px;text-align:center}.footer{color:#7f8999;text-align:center;font-size:10px;padding:24px 10px 8px}
   @media(max-width:1100px){.hero,.grid,.analysis-grid{grid-template-columns:1fr}.calendar{grid-template-columns:repeat(3,minmax(0,1fr))}.sim-layout{grid-template-columns:1fr}.side-stack{display:grid;grid-template-columns:repeat(2,1fr)}.driver-grid{grid-template-columns:1fr}.override-grid{grid-template-columns:repeat(3,1fr)}}
@@ -94,7 +94,7 @@
   <header class="topbar">
     <div class="brand"><div class="mark"><span>F1</span> Scenario Lab</div><small>2026 Championship Simulator</small></div>
     <div class="top-actions">
-      <button class="btn warn" id="refreshLiveBtn">Refresh F1 data</button>
+      <button class="btn warn" id="refreshLiveBtn">Refresh official data</button>
       <button class="btn ghost" id="exportBtn">Export scenario</button>
       <button class="btn ghost" id="importBtn">Import scenario</button>
       <button class="btn" id="saveBtn">Save locally</button>
@@ -121,7 +121,7 @@
       <div class="metric"><b id="maxDriverPts">233</b><span>max driver points still available</span></div>
       <div class="livebar" id="liveStatusBar" data-state="cache">
         <span class="live-dot cache" id="liveDot" aria-hidden="true"></span>
-        <div class="live-copy"><b id="liveStatusTitle">Built-in snapshot through Spanish GP</b><small id="liveStatusDetail">Live refresh starts automatically when the hosted app opens.</small></div>
+        <div class="live-copy"><b id="liveStatusTitle">Built-in snapshot through Spanish GP</b><small id="liveStatusDetail">The hosted GitHub snapshot is checked automatically when the app opens.</small></div>
         <button class="btn" id="refreshLiveBtnHero" type="button">Refresh</button>
       </div>
       <div class="note">Actual results always override simulations. When a Grand Prix or Sprint becomes official, that session is locked and its hypothetical inputs are cleared while your scenarios for later races remain intact.</div>
@@ -216,9 +216,9 @@
   </main>
 
   <div class="sourcebox card">
-    <b>Live data:</b> The hosted dashboard checks <a href="https://openf1.org/docs/" target="_blank" rel="noreferrer">OpenF1</a> for completed-session results and championship standings on launch and when you tap Refresh. It also checks an optional same-origin <code>data/season-2026.json</code> snapshot generated by the included GitHub Action. If both are unavailable, the app falls back to its built-in September 13 snapshot and clearly labels that state.
+    <b>Official data:</b> The dashboard treats <code>data/season-2026.json</code>, generated and committed by the GitHub Action, as the authoritative championship snapshot. Refresh reloads that file with cache-busting. <a href="https://openf1.org/docs/" target="_blank" rel="noreferrer">OpenF1</a> is used only as a secondary freshness check to detect whether a newer Grand Prix or Sprint has finished; the browser no longer replaces the canonical standings directly from OpenF1. If the Action has not published the new snapshot yet, the dashboard clearly shows <b>official snapshot pending</b>.
   </div>
-  <div class="footer">Mobile-first browser app • live sync + cached fallback • scenario data stays in your browser unless you export it</div>
+  <div class="footer">Mobile-first browser app • GitHub Actions official snapshot + OpenF1 freshness check • scenario data stays in your browser unless you export it</div>
 
   <nav class="bottom-nav" id="bottomNav" aria-label="Primary navigation">
     <button class="active" data-view="standings"><span class="nav-icon">▤</span><span>Standings</span></button>
@@ -233,8 +233,8 @@
 /* ================================================================
    F1 2026 LIVE DATA + SCENARIO ENGINE
    - Built-in fallback snapshot: after 2026 Spanish GP (Madrid)
-   - Same-origin JSON snapshot: ./data/season-2026.json (optional)
-   - Live refresh: OpenF1 historical API after completed sessions
+   - Authoritative same-origin snapshot: ./data/season-2026.json (GitHub Actions)
+   - OpenF1 is a secondary freshness check only; browser refresh never writes canonical standings
    ================================================================ */
 const CONFIG = {
   season: 2026,
@@ -634,7 +634,7 @@ function refreshSummaryMetrics(){
   document.getElementById('remainingSprintCount').textContent=sprintRemaining;
   document.getElementById('maxDriverPts').textContent=totalRemainingMax('driver');
   const baseline=document.getElementById('baselineEyebrow');
-  if(baseline) baseline.textContent=`${liveMeta.mode==='live'?'Live data':'Cached baseline'} • ${liveMeta.baselineLabel}`;
+  if(baseline) baseline.textContent=`${liveMeta.mode==='live'?'Official data':liveMeta.mode==='pending'?'Snapshot pending':'Cached baseline'} • ${liveMeta.baselineLabel}`;
   const hero=document.getElementById('heroCopy');
   if(hero) hero.textContent=`Actual championship data is locked through ${liveMeta.lastRaceName || 'the latest completed race'}. Simulate every remaining round${sprintRemaining?`, including ${sprintRemaining} remaining Sprint${sprintRemaining===1?'':'s'}`:''}, and the projections recalculate instantly.`;
 }
@@ -643,6 +643,18 @@ function formatLocalTimestamp(iso){
   if(!iso)return 'unknown';
   const d=new Date(iso); if(Number.isNaN(d.getTime()))return 'unknown';
   return d.toLocaleString(undefined,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
+}
+function formatAge(iso){
+  const t=Date.parse(iso||'');
+  if(!Number.isFinite(t)) return 'at an unknown time';
+  const mins=Math.max(0,Math.floor((Date.now()-t)/60000));
+  if(mins<1) return 'just now';
+  if(mins<60) return `${mins} min ago`;
+  const hrs=Math.floor(mins/60); if(hrs<24) return `${hrs} hr${hrs===1?'':'s'} ago`;
+  const days=Math.floor(hrs/24); return `${days} day${days===1?'':'s'} ago`;
+}
+function baselineStatusText(){
+  return String(liveMeta.baselineLabel||`After ${liveMeta.lastRaceName||'latest race'}`).replace(/^After\s+/i,'');
 }
 function setLiveStatus(mode,title,detail){
   liveMeta.mode=mode;
@@ -655,15 +667,23 @@ function setLiveStatus(mode,title,detail){
   if(t) t.textContent=title;
   if(d) d.textContent=detail;
   const btn=document.getElementById('refreshLiveBtn');
-  if(btn){btn.disabled=syncInProgress;btn.textContent=syncInProgress?'Refreshing…':'Refresh F1 data';}
+  if(btn){btn.disabled=syncInProgress;btn.textContent=syncInProgress?'Checking…':'Refresh official data';}
   const heroBtn=document.getElementById('refreshLiveBtnHero');
-  if(heroBtn){heroBtn.disabled=syncInProgress;heroBtn.textContent=syncInProgress?'Refreshing…':'Refresh';}
+  if(heroBtn){heroBtn.disabled=syncInProgress;heroBtn.textContent=syncInProgress?'Checking…':'Refresh';}
 }
 function updateLiveStatusFromMeta(){
-  if(liveMeta.mode==='live') setLiveStatus('live',`Live through ${liveMeta.lastRaceName}`,`Synced ${formatLocalTimestamp(liveMeta.updatedAt)} from OpenF1.`);
-  else if(liveMeta.mode==='cache') setLiveStatus('cache',`Cached through ${liveMeta.lastRaceName}`,`Using saved data from ${formatLocalTimestamp(liveMeta.updatedAt)}. Tap refresh to try live data.`);
-  else if(liveMeta.mode==='error') setLiveStatus('error',`Offline fallback through ${liveMeta.lastRaceName}`,liveMeta.error||'Live refresh unavailable; simulations still work.');
-  else setLiveStatus('cache',`Built-in snapshot through ${liveMeta.lastRaceName}`,`Fallback snapshot dated ${formatLocalTimestamp(liveMeta.updatedAt)}. Live refresh runs automatically when hosted over HTTPS.`);
+  if(liveMeta.mode==='pending'){
+    setLiveStatus('pending','New race result detected — official snapshot pending',`${liveMeta.pendingLabel||'A newer F1 session'} is available from OpenF1. The GitHub Action will publish the authoritative snapshot automatically; refresh again shortly.`);
+  } else if(liveMeta.mode==='live'){
+    const extra=liveMeta.freshnessError?' OpenF1 freshness check is temporarily unavailable.':'';
+    setLiveStatus('live',`Official snapshot • ${baselineStatusText()}`,`Updated ${formatAge(liveMeta.updatedAt)} via GitHub Actions (${formatLocalTimestamp(liveMeta.updatedAt)}).${extra}`);
+  } else if(liveMeta.mode==='cache'){
+    setLiveStatus('cache',`Saved snapshot • ${baselineStatusText()}`,`Using this device's cached copy from ${formatLocalTimestamp(liveMeta.updatedAt)}. Tap refresh to reload the GitHub snapshot.`);
+  } else if(liveMeta.mode==='error'){
+    setLiveStatus('error',`Offline fallback • ${baselineStatusText()}`,liveMeta.error||'The hosted snapshot is unavailable; simulations still work from the last known data.');
+  } else {
+    setLiveStatus('cache',`Built-in snapshot • ${baselineStatusText()}`,`Fallback snapshot dated ${formatLocalTimestamp(liveMeta.updatedAt)}. The hosted GitHub snapshot is checked automatically.`);
+  }
 }
 
 function refreshAll(){
@@ -754,7 +774,7 @@ function applySnapshot(snap,mode='cache'){
   CONFIG.baselineLabel=snap.baselineLabel||CONFIG.baselineLabel;
   liveMeta={
     mode,
-    source:mode==='live'?'OpenF1':'Cached snapshot',
+    source:mode==='live'?'GitHub Actions snapshot':'Cached snapshot',
     updatedAt:snap.updatedAt||new Date().toISOString(),
     baselineLabel:snap.baselineLabel||CONFIG.baselineLabel,
     lastRaceRound:Number(snap.lastRaceRound)||Math.max(0,...CALENDAR.filter(r=>r.completed).map(r=>r.round)),
@@ -779,14 +799,19 @@ function migrateScenarioToActual(){
 
 async function loadHostedSnapshot(){
   try{
-    const snap=await fetchJson(`./data/season-${CONFIG.season}.json?ts=${Date.now()}`,{timeout:5000});
+    const snap=await fetchJson(`./data/season-${CONFIG.season}.json?ts=${Date.now()}`,{timeout:7000});
     const currentTime=Date.parse(liveMeta.updatedAt||0)||0, candidate=Date.parse(snap.updatedAt||0)||0;
-    if(candidate>currentTime && applySnapshot(snap,'cache')){
+    // The hosted JSON is authoritative. Re-apply an equal/newer snapshot so a manual
+    // refresh also changes the status from a local cache to the official GitHub source.
+    if(candidate>=currentTime && applySnapshot(snap,'live')){
+      liveMeta.freshnessError=null;
       storageSet(JSON.stringify(snap),LIVE_CACHE_KEY);
       refreshAll();
       return true;
     }
-  }catch(e){}
+  }catch(e){
+    liveMeta.hostedError=(e&&e.message)||'Hosted snapshot unavailable.';
+  }
   return false;
 }
 
@@ -836,122 +861,66 @@ function updatePointsFromChampionship(driverChamp,teamChamp,roster){
   for(const row of teamChamp){const name=canonicalTeam(row.team_name);if(byTeam[name])byTeam[name].points=Number(row.points_current)||0;}
 }
 
-async function syncLiveData({manual=false}={}){
+async function checkOpenF1Freshness(){
+  const now=Date.now();
+  const [meetings,sessions]=await Promise.all([
+    fetchJson(api(`meetings?year=${CONFIG.season}`),{timeout:8000}),
+    fetchJson(api(`sessions?year=${CONFIG.season}`),{timeout:8000})
+  ]);
+  const gpMeetings=meetings.filter(isGpMeeting).sort((a,b)=>Date.parse(a.date_start)-Date.parse(b.date_start));
+  const meetingRound=Object.fromEntries(gpMeetings.map((m,i)=>[Number(m.meeting_key),i+1]));
+  const gpMeetingSet=new Set(gpMeetings.map(m=>Number(m.meeting_key)));
+  const completed=sessions
+    .filter(s=>gpMeetingSet.has(Number(s.meeting_key))&&(isRaceSession(s)||isSprintSession(s))&&s.date_end&&Date.parse(s.date_end)<=now)
+    .sort((a,b)=>Date.parse(b.date_end)-Date.parse(a.date_end));
+  if(!completed.length) return {pending:false};
+  const latest=completed[0];
+  const round=meetingRound[Number(latest.meeting_key)]||0;
+  const kind=isSprintSession(latest)?'Sprint':'Race';
+  const m=gpMeetings.find(x=>Number(x.meeting_key)===Number(latest.meeting_key));
+  const eventName=shortMeetingName(m?.meeting_name,m?.location)||`Round ${round}`;
+  const snapshotRound=Number(liveMeta.lastRaceRound)||0;
+  const snapshotSession=String(liveMeta.lastSessionName||'Race').toLowerCase();
+  const pending=kind==='Race'
+    ? round>snapshotRound
+    : (round>snapshotRound || (round===snapshotRound && snapshotSession!=='sprint'));
+  return {pending,round,kind,eventName,label:`${eventName} ${kind}`};
+}
+
+async function refreshOfficialData({manual=false}={}){
   if(syncInProgress)return;
   syncInProgress=true;
-  setLiveStatus('syncing','Refreshing F1 data…','Checking the latest completed sessions and championship standings.');
+  setLiveStatus('syncing','Checking official F1 snapshot…','Reloading the GitHub Actions snapshot and checking whether OpenF1 sees anything newer.');
+  const hadOfficial=liveMeta.source==='GitHub Actions snapshot';
+  let hostedLoaded=false;
   try{
-    const now=Date.now();
-    const [meetings,sessions]=await Promise.all([
-      fetchJson(api(`meetings?year=${CONFIG.season}`)),
-      fetchJson(api(`sessions?year=${CONFIG.season}`))
-    ]);
-    const gpMeetings=meetings.filter(isGpMeeting).sort((a,b)=>Date.parse(a.date_start)-Date.parse(b.date_start));
-    const meetingRound=Object.fromEntries(gpMeetings.map((m,i)=>[Number(m.meeting_key),i+1]));
-    const gpMeetingSet=new Set(gpMeetings.map(m=>Number(m.meeting_key)));
-    const relevantSessions=sessions.filter(s=>gpMeetingSet.has(Number(s.meeting_key)));
-    const raceSessions=relevantSessions.filter(isRaceSession);
-    const sprintSessions=relevantSessions.filter(isSprintSession);
-    const completedRaceSessions=raceSessions.filter(s=>s.date_end&&Date.parse(s.date_end)<=now);
-    const official=await findLatestOfficialRace(completedRaceSessions);
-    const officialRound=meetingRound[Number(official.raceSession.meeting_key)];
-    if(!officialRound) throw new Error('Could not map the latest race to the 2026 calendar.');
-
-    // The most recent completed session gives us the latest known active driver/team roster.
-    const completedSessions=relevantSessions.filter(s=>s.date_end&&Date.parse(s.date_end)<=now).sort((a,b)=>Date.parse(b.date_end)-Date.parse(a.date_end));
-    let latestRoster=[];
-    for(const s of completedSessions.slice(0,5)){
-      try{const r=await fetchJson(api(`drivers?session_key=${encodeURIComponent(s.session_key)}`));if(Array.isArray(r)&&r.length){latestRoster=r;break}}catch(e){}
-    }
-    if(!latestRoster.length) latestRoster=await fetchJson(api(`drivers?session_key=${encodeURIComponent(official.raceSession.session_key)}`));
-
-    const oldCalendarByMeeting=Object.fromEntries(CALENDAR.map(r=>[Number(r.meetingKey),r]));
-    const numberMap=Object.fromEntries(DRIVERS.map(d=>[Number(d.number),d]));
-    const oldCompletedMax=Math.max(0,...CALENDAR.filter(r=>r.completed).map(r=>r.round));
-
-    // Build the current official/revised calendar from OpenF1 meetings + session schedule.
-    const nextCalendar=gpMeetings.map((m,i)=>{
-      const round=i+1, old=oldCalendarByMeeting[Number(m.meeting_key)]||CALENDAR.find(r=>r.round===round)||{};
-      const rs=raceSessions.find(s=>Number(s.meeting_key)===Number(m.meeting_key));
-      const ss=sprintSessions.find(s=>Number(s.meeting_key)===Number(m.meeting_key));
-      const sprintCompleted=!!ss && !!ss.date_end && Date.parse(ss.date_end)<=now && round<=Math.max(officialRound,round);
-      const current=Date.parse(m.date_start)<=now && Date.parse(m.date_end)>=now;
-      return {
-        ...old,
-        round,
-        meetingKey:Number(m.meeting_key),
-        name:shortMeetingName(m.meeting_name,m.location),
-        place:(/Kuala Lumpur/i.test(m.location||'')&&/Bahrain/i.test(m.meeting_name||''))?'Sepang':String(m.location||old.place||''),
-        date:formatMeetingDates(m)||old.date||'',
-        completed:round<=officialRound,
-        sprint:!!ss || !!old.sprint,
-        sprintCompleted:round<officialRound ? (!!ss||!!old.sprintCompleted) : (round===officialRound?!!ss:(!!ss&&Date.parse(ss.date_end)<=now)),
-        current
-      };
-    });
-
-    // Update championship points first; GP wins/podiums stay from the snapshot and are incremented only for newly locked races.
-    updatePointsFromChampionship(official.driverChamp,official.teamChamp,latestRoster);
-
-    // Add new GP result details, wins and podiums since the last cached/built-in snapshot.
-    for(const r of nextCalendar.filter(x=>x.completed&&x.round>oldCompletedMax)){
-      const rs=raceSessions.find(s=>Number(s.meeting_key)===Number(r.meetingKey));
-      if(!rs) continue;
-      try{
-        const bundle=await fetchRaceBundle(rs,numberMap);
-        r.podium=bundle.podium;
-        for(const [idx,id] of bundle.podium.entries()){
-          const d=DRIVERS.find(x=>x.id===id); if(d){if(idx===0)d.wins=(d.wins||0)+1;d.podiums=(d.podiums||0)+1;}
-          const row=bundle.results.find(x=>driverIdFromRecord(bundle.rosterByNumber[Number(x.driver_number)]||x,numberMap)===id);
-          const team=canonicalTeam(bundle.rosterByNumber[Number(row?.driver_number)]?.team_name || d?.team);
-          const c=CONSTRUCTORS.find(x=>canonicalTeam(x.name)===team); if(c){if(idx===0)c.wins=(c.wins||0)+1;c.podiums=(c.podiums||0)+1;}
-        }
-      }catch(e){}
+    hostedLoaded=await loadHostedSnapshot();
+    let freshness=null;
+    try{
+      freshness=await checkOpenF1Freshness();
+      liveMeta.freshnessError=null;
+    }catch(err){
+      liveMeta.freshnessError=(err&&err.message)||'Freshness check unavailable.';
     }
 
-    // Populate actual Sprint winners and, if a Sprint has happened after the latest GP baseline, add its points now.
-    const currentSprintCandidates=sprintSessions.filter(s=>s.date_end&&Date.parse(s.date_end)<=now).sort((a,b)=>Date.parse(a.date_end)-Date.parse(b.date_end));
-    for(const ss of currentSprintCandidates){
-      const round=meetingRound[Number(ss.meeting_key)], r=nextCalendar.find(x=>x.round===round); if(!r)continue;
-      let results=[]; let roster=[];
-      const old=oldCalendarByMeeting[Number(ss.meeting_key)];
-      if(old?.sprintWinner && old?.sprintCompleted){r.sprintWinner=old.sprintWinner;r.sprintCompleted=true;continue;}
-      try{
-        [results,roster]=await Promise.all([fetchJson(api(`session_result?session_key=${encodeURIComponent(ss.session_key)}`)),fetchJson(api(`drivers?session_key=${encodeURIComponent(ss.session_key)}`))]);
-        const rb=Object.fromEntries(roster.map(x=>[Number(x.driver_number),x]));
-        const winner=results.find(x=>Number(x.position)===1);
-        if(winner){r.sprintWinner=driverIdFromRecord(rb[Number(winner.driver_number)]||winner,numberMap);r.sprintCompleted=true;}
-        if(round>officialRound){
-          for(const result of results){
-            const pos=Number(result.position), pts=pointsForPos(pos,'sprint'); if(!pts)continue;
-            const rr=rb[Number(result.driver_number)], id=driverIdFromRecord(rr||result,numberMap), d=DRIVERS.find(x=>x.id===id);
-            if(d)d.points+=pts;
-            const team=canonicalTeam(rr?.team_name||d?.team), c=CONSTRUCTORS.find(x=>canonicalTeam(x.name)===team); if(c)c.points+=pts;
-          }
-        }
-      }catch(e){}
+    if(freshness?.pending){
+      liveMeta.mode='pending';
+      liveMeta.pendingLabel=freshness.label;
+      liveMeta.pendingRound=freshness.round;
+      liveMeta.pendingSession=freshness.kind;
+    }else{
+      delete liveMeta.pendingLabel; delete liveMeta.pendingRound; delete liveMeta.pendingSession;
+      if(hostedLoaded || hadOfficial || liveMeta.source==='GitHub Actions snapshot') liveMeta.mode='live';
+      else if(liveMeta.source==='Built-in snapshot') liveMeta.mode='error';
+      else liveMeta.mode='cache';
     }
-
-    CALENDAR=nextCalendar;
-    const officialMeeting=gpMeetings.find(m=>Number(m.meeting_key)===Number(official.raceSession.meeting_key));
-    const lastRaceName=shortMeetingName(officialMeeting?.meeting_name,officialMeeting?.location)||`Round ${officialRound}`;
-    const latestCompletedSprint=nextCalendar.filter(r=>r.sprintCompleted&&!r.completed).sort((a,b)=>b.round-a.round)[0];
-    const baselineLabel=latestCompletedSprint?`After ${latestCompletedSprint.name} Sprint`:`After ${lastRaceName}`;
-    CONFIG.baselineLabel=baselineLabel;
-    liveMeta={mode:'live',source:'OpenF1',updatedAt:new Date().toISOString(),baselineLabel,lastRaceRound:officialRound,lastRaceName,lastSessionName:latestCompletedSprint?'Sprint':'Race',error:null};
-    rebuildDerived();
-    migrateScenarioToActual();
-    const snap=snapshotPayload();
-    storageSet(JSON.stringify(snap),LIVE_CACHE_KEY);
-    refreshAll();
   }catch(err){
-    liveMeta.error=(err&&err.message)||'Live refresh failed.';
-    liveMeta.mode=liveMeta.source==='Built-in snapshot'?'error':'cache';
-    updateLiveStatusFromMeta();
-    if(manual) console.warn('F1 live refresh failed:',err);
+    liveMeta.error=(err&&err.message)||'Official snapshot refresh failed.';
+    if(liveMeta.source==='Built-in snapshot') liveMeta.mode='error';
   }finally{
     syncInProgress=false;
     updateLiveStatusFromMeta();
+    if(manual && liveMeta.mode==='pending') console.info('A newer F1 session is available; waiting for the GitHub Actions snapshot.');
   }
 }
 
@@ -988,15 +957,15 @@ document.getElementById('exportBtn').addEventListener('click',()=>{
 });
 document.getElementById('importBtn').addEventListener('click',()=>document.getElementById('importFile').click());
 document.getElementById('importFile').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const x=JSON.parse(await f.text());scenario=x.scenario||x;migrateScenarioToActual();refreshAll();}catch(err){alert('That file is not a valid scenario JSON file.');}e.target.value='';});
-document.getElementById('refreshLiveBtn').addEventListener('click',()=>syncLiveData({manual:true}));
-document.getElementById('refreshLiveBtnHero').addEventListener('click',()=>syncLiveData({manual:true}));
+document.getElementById('refreshLiveBtn').addEventListener('click',()=>refreshOfficialData({manual:true}));
+document.getElementById('refreshLiveBtnHero').addEventListener('click',()=>refreshOfficialData({manual:true}));
 
-// Initial state: scenario -> cached live snapshot -> bundled snapshot -> direct OpenF1 refresh.
+// Initial state: scenario -> local cached snapshot -> bundled fallback -> authoritative GitHub snapshot -> OpenF1 freshness check.
 const saved=storageGet();if(saved){try{scenario=JSON.parse(saved)||{}}catch(e){scenario={}}}
 const cached=storageGet(LIVE_CACHE_KEY);if(cached){try{const s=JSON.parse(cached);if((Date.parse(s.updatedAt||0)||0)>(Date.parse(CONFIG.fallbackUpdatedAt)||0))applySnapshot(s,'cache')}catch(e){}}
 migrateScenarioToActual();
 refreshAll();
-(async()=>{await loadHostedSnapshot();await syncLiveData();})();
+(async()=>{await refreshOfficialData();})();
 
 </script>
 </body>
