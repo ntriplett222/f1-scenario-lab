@@ -1,8 +1,8 @@
 {
   "schemaVersion": 3,
   "season": 2026,
-  "updatedAt": "2026-09-13T19:15:00Z",
-  "baselineLabel": "After 2026 Spanish Grand Prix — Sep 13, 2026",
+  "updatedAt": "2026-09-14T01:12:56.998629Z",
+  "baselineLabel": "After Spanish GP",
   "lastRaceRound": 14,
   "lastRaceName": "Spanish GP",
   "lastSessionName": "Race",
@@ -320,7 +320,8 @@
         "RUS",
         "ANT",
         "LEC"
-      ]
+      ],
+      "current": false
     },
     {
       "round": 2,
@@ -336,7 +337,8 @@
         "RUS",
         "HAM"
       ],
-      "sprintWinner": "RUS"
+      "sprintWinner": "RUS",
+      "current": false
     },
     {
       "round": 3,
@@ -351,13 +353,14 @@
         "ANT",
         "PIA",
         "LEC"
-      ]
+      ],
+      "current": false
     },
     {
       "round": 4,
       "meetingKey": 1284,
       "name": "Miami GP",
-      "place": "Miami",
+      "place": "Miami Gardens",
       "date": "May 1–3",
       "completed": true,
       "sprint": true,
@@ -367,13 +370,14 @@
         "NOR",
         "PIA"
       ],
-      "sprintWinner": "NOR"
+      "sprintWinner": "NOR",
+      "current": false
     },
     {
       "round": 5,
       "meetingKey": 1285,
       "name": "Canadian GP",
-      "place": "Montreal",
+      "place": "Montréal",
       "date": "May 22–24",
       "completed": true,
       "sprint": true,
@@ -383,13 +387,14 @@
         "HAM",
         "VER"
       ],
-      "sprintWinner": "RUS"
+      "sprintWinner": "RUS",
+      "current": false
     },
     {
       "round": 6,
       "meetingKey": 1286,
       "name": "Monaco GP",
-      "place": "Monaco",
+      "place": "Monte Carlo",
       "date": "Jun 5–7",
       "completed": true,
       "sprint": false,
@@ -398,7 +403,8 @@
         "ANT",
         "HAM",
         "HAD"
-      ]
+      ],
+      "current": false
     },
     {
       "round": 7,
@@ -413,7 +419,8 @@
         "HAM",
         "RUS",
         "NOR"
-      ]
+      ],
+      "current": false
     },
     {
       "round": 8,
@@ -428,7 +435,8 @@
         "RUS",
         "VER",
         "ANT"
-      ]
+      ],
+      "current": false
     },
     {
       "round": 9,
@@ -444,7 +452,8 @@
         "RUS",
         "HAM"
       ],
-      "sprintWinner": "ANT"
+      "sprintWinner": "ANT",
+      "current": false
     },
     {
       "round": 10,
@@ -459,7 +468,8 @@
         "ANT",
         "LEC",
         "VER"
-      ]
+      ],
+      "current": false
     },
     {
       "round": 11,
@@ -474,7 +484,8 @@
         "NOR",
         "VER",
         "ANT"
-      ]
+      ],
+      "current": false
     },
     {
       "round": 12,
@@ -490,7 +501,8 @@
         "ANT",
         "RUS"
       ],
-      "sprintWinner": "RUS"
+      "sprintWinner": "RUS",
+      "current": false
     },
     {
       "round": 13,
@@ -505,7 +517,8 @@
         "ANT",
         "RUS",
         "VER"
-      ]
+      ],
+      "current": false
     },
     {
       "round": 14,
@@ -520,7 +533,8 @@
         "ANT",
         "VER",
         "NOR"
-      ]
+      ],
+      "current": false
     },
     {
       "round": 15,
@@ -530,7 +544,8 @@
       "date": "Sep 24–26",
       "completed": false,
       "sprint": false,
-      "sprintCompleted": false
+      "sprintCompleted": false,
+      "current": false
     },
     {
       "round": 16,
@@ -540,17 +555,19 @@
       "date": "Oct 2–4",
       "completed": false,
       "sprint": false,
-      "sprintCompleted": false
+      "sprintCompleted": false,
+      "current": false
     },
     {
       "round": 17,
       "meetingKey": 1296,
       "name": "Singapore GP",
-      "place": "Singapore",
+      "place": "Marina Bay",
       "date": "Oct 9–11",
       "completed": false,
       "sprint": true,
-      "sprintCompleted": false
+      "sprintCompleted": false,
+      "current": false
     },
     {
       "round": 18,
@@ -560,7 +577,8 @@
       "date": "Oct 23–25",
       "completed": false,
       "sprint": false,
-      "sprintCompleted": false
+      "sprintCompleted": false,
+      "current": false
     },
     {
       "round": 19,
@@ -570,17 +588,19 @@
       "date": "Oct 30–Nov 1",
       "completed": false,
       "sprint": false,
-      "sprintCompleted": false
+      "sprintCompleted": false,
+      "current": false
     },
     {
       "round": 20,
       "meetingKey": 1299,
-      "name": "Sao Paulo GP",
-      "place": "Sao Paulo",
+      "name": "São Paulo GP",
+      "place": "São Paulo",
       "date": "Nov 6–8",
       "completed": false,
       "sprint": false,
-      "sprintCompleted": false
+      "sprintCompleted": false,
+      "current": false
     },
     {
       "round": 21,
@@ -590,7 +610,8 @@
       "date": "Nov 19–21",
       "completed": false,
       "sprint": false,
-      "sprintCompleted": false
+      "sprintCompleted": false,
+      "current": false
     },
     {
       "round": 22,
@@ -600,7 +621,8 @@
       "date": "Nov 27–29",
       "completed": false,
       "sprint": false,
-      "sprintCompleted": false
+      "sprintCompleted": false,
+      "current": false
     },
     {
       "round": 23,
@@ -610,7 +632,8 @@
       "date": "Dec 4–6",
       "completed": false,
       "sprint": false,
-      "sprintCompleted": false
+      "sprintCompleted": false,
+      "current": false
     }
   ]
 }
