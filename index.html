@@ -33,7 +33,7 @@
   .note{grid-column:1/-1;color:#cfd4de;font-size:12px;padding:11px 12px;background:#0c0e14;border-left:3px solid var(--amber);border-radius:9px}
   .tabs{display:flex;gap:8px;overflow:auto;padding:4px;margin:10px 0 16px}.tab{white-space:nowrap;border:1px solid var(--line);background:#11141b;color:#cbd1dc;padding:10px 14px;border-radius:999px;font-weight:800}.tab.active{background:#fff;color:#080a0f;border-color:#fff}
   .view{display:none}.view.active{display:block}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{padding:18px;overflow:hidden}.card h2{margin:0 0 4px;font-size:19px}.sub{color:var(--muted);font-size:12px;margin-bottom:14px}
-  .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px}.standings{width:100%;border-collapse:collapse;min-width:700px}.standings th,.standings td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.06);text-align:left;font-size:13px}.standings th{position:sticky;top:0;background:#171b24;color:#929baa;text-transform:uppercase;font-size:10px;letter-spacing:.08em;z-index:2}.standings tr:last-child td{border-bottom:none}.standings tr:hover td{background:rgba(255,255,255,.018)}.pos{font-weight:950;font-size:16px}.entity{font-weight:800}.team-tag{font-size:11px;color:var(--muted)}.num{text-align:right!important;font-variant-numeric:tabular-nums}.leader{color:var(--green)}.gap{color:#aeb6c3}.delta.up{color:var(--green)}.delta.down{color:var(--danger)}
+  .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px}.standings{width:100%;border-collapse:collapse;min-width:700px}.standings th,.standings td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.06);text-align:left;font-size:13px}.standings th{position:sticky;top:0;background:#171b24;color:#929baa;text-transform:uppercase;font-size:10px;letter-spacing:.08em;z-index:2}.standings tr:last-child td{border-bottom:none}.standings tr:hover td{background:rgba(255,255,255,.018)}.standings tr.eliminated-row td{opacity:.48}.standings tr.eliminated-row:hover td{opacity:.7}.standings tr.elimination-line td{padding:0!important;height:30px;border-bottom:none!important;background:#0c0f15!important;opacity:1!important}.elimination-divider{height:30px;display:flex;align-items:center;gap:9px;padding:0 12px;color:#ff8d95;font-size:9px;font-weight:950;letter-spacing:.11em;text-transform:uppercase;white-space:nowrap}.elimination-divider:before,.elimination-divider:after{content:"";height:2px;flex:1;background:linear-gradient(90deg,transparent,var(--red))}.elimination-divider:after{background:linear-gradient(90deg,var(--red),transparent)}.elim-badge{display:inline-flex;margin-left:7px;padding:2px 5px;border-radius:999px;border:1px solid rgba(255,93,103,.38);background:rgba(255,93,103,.09);color:#ff9da4;font-size:8px;font-weight:900;letter-spacing:.07em;vertical-align:1px}.pos{font-weight:950;font-size:16px}.entity{font-weight:800}.team-tag{font-size:11px;color:var(--muted)}.num{text-align:right!important;font-variant-numeric:tabular-nums}.leader{color:var(--green)}.gap{color:#aeb6c3}.delta.up{color:var(--green)}.delta.down{color:var(--danger)}
   .calendar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.race{border:1px solid var(--line);border-radius:15px;padding:13px;background:var(--panel2);position:relative;min-height:132px}.race.completed{opacity:.82}.race.current{border-color:var(--red);box-shadow:inset 0 0 0 1px rgba(255,30,45,.35)}.race .rnum{font-size:10px;color:var(--muted);font-weight:850;text-transform:uppercase;letter-spacing:.1em}.race h3{margin:3px 0 2px;font-size:16px}.race .date{font-size:11px;color:var(--muted)}.pill{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:4px 7px;font-size:10px;font-weight:850;margin-top:8px;border:1px solid var(--line)}.pill.sprint{background:rgba(169,120,255,.12);color:#d0b5ff;border-color:rgba(169,120,255,.34)}.pill.done{background:rgba(41,209,125,.10);color:#86efb3;border-color:rgba(41,209,125,.3)}.pill.live{background:rgba(255,30,45,.13);color:#ff8d95;border-color:rgba(255,30,45,.35)}.result{font-size:11px;color:#c9cfda;margin-top:8px}.result b{color:#fff}
   .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:end}.field{display:flex;flex-direction:column;gap:5px;min-width:170px}.field label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:850}.field select,.field input{background:#0c0f15;color:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 10px;outline:none}.field input:focus,.field select:focus{border-color:#697486}
   .sim-layout{display:grid;grid-template-columns:310px minmax(0,1fr);gap:16px}.side-stack{display:flex;flex-direction:column;gap:12px}.quick{padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--panel2)}.quick h3{margin:0 0 10px;font-size:14px}.quick p{color:var(--muted);font-size:11px;margin:6px 0 10px}.quick .field{min-width:0;width:100%;margin-bottom:8px}
@@ -138,8 +138,8 @@
   <main>
     <section class="view active" id="view-standings">
       <div class="grid">
-        <div class="card"><h2>Drivers' Championship</h2><div class="sub">Projected totals include your scenario. GP podiums do not count Sprint top-three finishes.</div><div class="table-wrap"><table class="standings" id="driverTable"></table></div></div>
-        <div class="card"><h2>Constructors' Championship</h2><div class="sub">Constructor projections use driver results unless you enter an explicit constructor session override.</div><div class="table-wrap"><table class="standings" id="constructorTable"></table></div></div>
+        <div class="card"><h2>Drivers' Championship</h2><div class="sub">Projected totals include your scenario. The red line uses current points plus all championship points still available, and moves automatically after live-data updates.</div><div class="table-wrap"><table class="standings" id="driverTable"></table></div></div>
+        <div class="card"><h2>Constructors' Championship</h2><div class="sub">Constructor projections use driver results unless you enter an explicit override. The red line marks current mathematical title elimination.</div><div class="table-wrap"><table class="standings" id="constructorTable"></table></div></div>
       </div>
     </section>
 
@@ -433,14 +433,32 @@ function getConstructorProjection(){
 
 function gapText(points,leader){return points===leader?'LEADER':`+${leader-points}`}
 function deltaText(v){return v?`+${v}`:'—'}
-function esc(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+function esc(v){return String(v??'').replace(/[&<>'\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[c]))}
+
+function currentTitleAlive(type,entity){
+  const all=type==='driver'?DRIVERS:CONSTRUCTORS;
+  const leader=Math.max(...all.map(x=>Number(x.points)||0));
+  const futureMax=totalRemainingMax(type);
+  return (Number(entity.points)||0)+futureMax>=leader;
+}
+function standingsRowsWithElimination(type,rows,leaderProjected){
+  const label=type==='driver'?'Drivers’ title elimination line':'Constructors’ title elimination line';
+  let inserted=false;
+  return rows.map((x,i)=>{
+    const alive=currentTitleAlive(type,x);
+    const divider=!alive&&!inserted?(inserted=true,`<tr class="elimination-line"><td colspan="8"><div class="elimination-divider">${label}</div></td></tr>`):'';
+    const badge=alive?'':' <span class="elim-badge">ELIMINATED</span>';
+    const entityCell=type==='driver'?`<td><div class="entity">${esc(x.name)}${x.active?'':' <span class="team-tag">(inactive)</span>'}${badge}</div><div class="team-tag">${esc(x.team)}</div></td>`:`<td class="entity">${esc(x.name)}${badge}</td>`;
+    return `${divider}<tr class="${alive?'':'eliminated-row'}"><td class="pos">${i+1}</td>${entityCell}<td class="num">${x.points}</td><td class="num delta ${x.added?'up':''}">${deltaText(x.added)}</td><td class="num"><b>${x.projected}</b></td><td class="num ${i===0?'leader':'gap'}">${gapText(x.projected,leaderProjected)}</td><td class="num">${x.projWins}</td><td class="num">${x.projPodiums}</td></tr>`;
+  }).join('');
+}
 
 function renderStandings(){
   const ds=getDriverProjection(), cs=getConstructorProjection();
   if(!ds.length||!cs.length) return;
   const dLead=ds[0].projected,cLead=cs[0].projected;
-  document.getElementById('driverTable').innerHTML=`<thead><tr><th>#</th><th>Driver</th><th class="num">Current</th><th class="num">Scenario</th><th class="num">Projected</th><th class="num">Gap</th><th class="num">Wins</th><th class="num">Podiums</th></tr></thead><tbody>${ds.map((d,i)=>`<tr><td class="pos">${i+1}</td><td><div class="entity">${esc(d.name)}${d.active?'':' <span class="team-tag">(inactive)</span>'}</div><div class="team-tag">${esc(d.team)}</div></td><td class="num">${d.points}</td><td class="num delta ${d.added?'up':''}">${deltaText(d.added)}</td><td class="num"><b>${d.projected}</b></td><td class="num ${i===0?'leader':'gap'}">${gapText(d.projected,dLead)}</td><td class="num">${d.projWins}</td><td class="num">${d.projPodiums}</td></tr>`).join('')}</tbody>`;
-  document.getElementById('constructorTable').innerHTML=`<thead><tr><th>#</th><th>Constructor</th><th class="num">Current</th><th class="num">Scenario</th><th class="num">Projected</th><th class="num">Gap</th><th class="num">Wins</th><th class="num">Podiums</th></tr></thead><tbody>${cs.map((c,i)=>`<tr><td class="pos">${i+1}</td><td class="entity">${esc(c.name)}</td><td class="num">${c.points}</td><td class="num delta ${c.added?'up':''}">${deltaText(c.added)}</td><td class="num"><b>${c.projected}</b></td><td class="num ${i===0?'leader':'gap'}">${gapText(c.projected,cLead)}</td><td class="num">${c.projWins}</td><td class="num">${c.projPodiums}</td></tr>`).join('')}</tbody>`;
+  document.getElementById('driverTable').innerHTML=`<thead><tr><th>#</th><th>Driver</th><th class="num">Current</th><th class="num">Scenario</th><th class="num">Projected</th><th class="num">Gap</th><th class="num">Wins</th><th class="num">Podiums</th></tr></thead><tbody>${standingsRowsWithElimination('driver',ds,dLead)}</tbody>`;
+  document.getElementById('constructorTable').innerHTML=`<thead><tr><th>#</th><th>Constructor</th><th class="num">Current</th><th class="num">Scenario</th><th class="num">Projected</th><th class="num">Gap</th><th class="num">Wins</th><th class="num">Podiums</th></tr></thead><tbody>${standingsRowsWithElimination('constructor',cs,cLead)}</tbody>`;
   document.getElementById('projDriverLeader').textContent=`${ds[0].name} (${ds[0].projected})`;
   document.getElementById('projConstructorLeader').textContent=`${cs[0].name} (${cs[0].projected})`;
 }
