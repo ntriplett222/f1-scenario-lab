@@ -1,7 +1,7 @@
 {
   "schemaVersion": 3,
   "season": 2026,
-  "updatedAt": "2026-09-14T01:12:56.998629Z",
+  "updatedAt": "2026-09-24T15:02:32.781866Z",
   "baselineLabel": "After Spanish GP",
   "lastRaceRound": 14,
   "lastRaceName": "Spanish GP",
@@ -85,13 +85,13 @@
       "points": 71,
       "wins": 0,
       "podiums": 1,
-      "active": false
+      "active": true
     },
     {
       "id": "LAW",
       "number": 30,
       "name": "Liam Lawson",
-      "team": "Red Bull Racing",
+      "team": "Racing Bulls",
       "points": 59,
       "wins": 0,
       "podiums": 0,
@@ -205,7 +205,7 @@
       "points": 1,
       "wins": 0,
       "podiums": 0,
-      "active": true
+      "active": false
     },
     {
       "id": "STR",
@@ -545,7 +545,7 @@
       "completed": false,
       "sprint": false,
       "sprintCompleted": false,
-      "current": false
+      "current": true
     },
     {
       "round": 16,
