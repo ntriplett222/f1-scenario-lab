@@ -1,10 +1,10 @@
 {
   "schemaVersion": 3,
   "season": 2026,
-  "updatedAt": "2026-09-24T15:02:32.781866Z",
-  "baselineLabel": "After Spanish GP",
-  "lastRaceRound": 14,
-  "lastRaceName": "Spanish GP",
+  "updatedAt": "2026-09-26T16:44:42.398511Z",
+  "baselineLabel": "After Azerbaijan GP",
+  "lastRaceRound": 15,
+  "lastRaceName": "Azerbaijan GP",
   "lastSessionName": "Race",
   "drivers": [
     {
@@ -12,7 +12,7 @@
       "number": 12,
       "name": "Kimi Antonelli",
       "team": "Mercedes",
-      "points": 292,
+      "points": 302,
       "wins": 8,
       "podiums": 12,
       "active": true
@@ -22,9 +22,9 @@
       "number": 63,
       "name": "George Russell",
       "team": "Mercedes",
-      "points": 211,
-      "wins": 2,
-      "podiums": 7,
+      "points": 236,
+      "wins": 3,
+      "podiums": 8,
       "active": true
     },
     {
@@ -32,7 +32,7 @@
       "number": 44,
       "name": "Lewis Hamilton",
       "team": "Ferrari",
-      "points": 191,
+      "points": 199,
       "wins": 1,
       "podiums": 5,
       "active": true
@@ -52,7 +52,7 @@
       "number": 16,
       "name": "Charles Leclerc",
       "team": "Ferrari",
-      "points": 167,
+      "points": 179,
       "wins": 1,
       "podiums": 4,
       "active": true
@@ -62,9 +62,9 @@
       "number": 3,
       "name": "Max Verstappen",
       "team": "Red Bull Racing",
-      "points": 145,
+      "points": 163,
       "wins": 0,
-      "podiums": 6,
+      "podiums": 7,
       "active": true
     },
     {
@@ -82,9 +82,9 @@
       "number": 6,
       "name": "Isack Hadjar",
       "team": "Red Bull Racing",
-      "points": 71,
+      "points": 86,
       "wins": 0,
-      "podiums": 1,
+      "podiums": 2,
       "active": true
     },
     {
@@ -112,7 +112,7 @@
       "number": 41,
       "name": "Arvid Lindblad",
       "team": "Racing Bulls",
-      "points": 31,
+      "points": 37,
       "wins": 0,
       "podiums": 0,
       "active": true
@@ -132,7 +132,7 @@
       "number": 87,
       "name": "Oliver Bearman",
       "team": "Haas F1 Team",
-      "points": 18,
+      "points": 20,
       "wins": 0,
       "podiums": 0,
       "active": true
@@ -162,7 +162,7 @@
       "number": 55,
       "name": "Carlos Sainz",
       "team": "Williams",
-      "points": 6,
+      "points": 7,
       "wins": 0,
       "podiums": 0,
       "active": true
@@ -182,7 +182,7 @@
       "number": 31,
       "name": "Esteban Ocon",
       "team": "Haas F1 Team",
-      "points": 3,
+      "points": 7,
       "wins": 0,
       "podiums": 0,
       "active": true
@@ -241,13 +241,13 @@
   "constructors": [
     {
       "name": "Mercedes",
-      "points": 503,
-      "wins": 10,
-      "podiums": 19
+      "points": 538,
+      "wins": 11,
+      "podiums": 20
     },
     {
       "name": "Ferrari",
-      "points": 358,
+      "points": 378,
       "wins": 2,
       "podiums": 9
     },
@@ -259,13 +259,13 @@
     },
     {
       "name": "Red Bull Racing",
-      "points": 230,
+      "points": 263,
       "wins": 0,
-      "podiums": 7
+      "podiums": 9
     },
     {
       "name": "Racing Bulls",
-      "points": 77,
+      "points": 83,
       "wins": 0,
       "podiums": 0
     },
@@ -277,7 +277,7 @@
     },
     {
       "name": "Haas F1 Team",
-      "points": 21,
+      "points": 27,
       "wins": 0,
       "podiums": 0
     },
@@ -289,7 +289,7 @@
     },
     {
       "name": "Williams",
-      "points": 11,
+      "points": 12,
       "wins": 0,
       "podiums": 0
     },
@@ -542,10 +542,15 @@
       "name": "Azerbaijan GP",
       "place": "Baku",
       "date": "Sep 24–26",
-      "completed": false,
+      "completed": true,
       "sprint": false,
       "sprintCompleted": false,
-      "current": true
+      "current": false,
+      "podium": [
+        "RUS",
+        "VER",
+        "HAD"
+      ]
     },
     {
       "round": 16,
