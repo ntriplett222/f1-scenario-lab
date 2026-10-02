@@ -1,7 +1,7 @@
 {
   "schemaVersion": 3,
   "season": 2026,
-  "updatedAt": "2026-09-26T16:44:42.398511Z",
+  "updatedAt": "2026-10-02T15:45:47.340434Z",
   "baselineLabel": "After Azerbaijan GP",
   "lastRaceRound": 15,
   "lastRaceName": "Azerbaijan GP",
@@ -561,7 +561,7 @@
       "completed": false,
       "sprint": false,
       "sprintCompleted": false,
-      "current": false
+      "current": true
     },
     {
       "round": 17,
