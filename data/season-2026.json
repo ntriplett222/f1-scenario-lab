@@ -1,10 +1,10 @@
 {
   "schemaVersion": 3,
   "season": 2026,
-  "updatedAt": "2026-10-02T15:45:47.340434Z",
-  "baselineLabel": "After Azerbaijan GP",
-  "lastRaceRound": 15,
-  "lastRaceName": "Azerbaijan GP",
+  "updatedAt": "2026-10-04T14:10:42.858716Z",
+  "baselineLabel": "After Bahrain GP in Malaysia",
+  "lastRaceRound": 16,
+  "lastRaceName": "Bahrain GP in Malaysia",
   "lastSessionName": "Race",
   "drivers": [
     {
@@ -12,9 +12,9 @@
       "number": 12,
       "name": "Kimi Antonelli",
       "team": "Mercedes",
-      "points": 302,
+      "points": 320,
       "wins": 8,
-      "podiums": 12,
+      "podiums": 13,
       "active": true
     },
     {
@@ -32,9 +32,9 @@
       "number": 44,
       "name": "Lewis Hamilton",
       "team": "Ferrari",
-      "points": 199,
+      "points": 214,
       "wins": 1,
-      "podiums": 5,
+      "podiums": 6,
       "active": true
     },
     {
@@ -42,7 +42,7 @@
       "number": 1,
       "name": "Lando Norris",
       "team": "McLaren",
-      "points": 186,
+      "points": 188,
       "wins": 2,
       "podiums": 5,
       "active": true
@@ -52,7 +52,7 @@
       "number": 16,
       "name": "Charles Leclerc",
       "team": "Ferrari",
-      "points": 179,
+      "points": 191,
       "wins": 1,
       "podiums": 4,
       "active": true
@@ -62,9 +62,9 @@
       "number": 3,
       "name": "Max Verstappen",
       "team": "Red Bull Racing",
-      "points": 163,
-      "wins": 0,
-      "podiums": 7,
+      "points": 188,
+      "wins": 1,
+      "podiums": 8,
       "active": true
     },
     {
@@ -72,7 +72,7 @@
       "number": 81,
       "name": "Oscar Piastri",
       "team": "McLaren",
-      "points": 120,
+      "points": 128,
       "wins": 0,
       "podiums": 2,
       "active": true
@@ -82,7 +82,7 @@
       "number": 6,
       "name": "Isack Hadjar",
       "team": "Red Bull Racing",
-      "points": 86,
+      "points": 96,
       "wins": 0,
       "podiums": 2,
       "active": true
@@ -92,7 +92,7 @@
       "number": 30,
       "name": "Liam Lawson",
       "team": "Racing Bulls",
-      "points": 59,
+      "points": 65,
       "wins": 0,
       "podiums": 0,
       "active": true
@@ -112,7 +112,7 @@
       "number": 41,
       "name": "Arvid Lindblad",
       "team": "Racing Bulls",
-      "points": 37,
+      "points": 38,
       "wins": 0,
       "podiums": 0,
       "active": true
@@ -192,7 +192,7 @@
       "number": 14,
       "name": "Fernando Alonso",
       "team": "Aston Martin",
-      "points": 3,
+      "points": 7,
       "wins": 0,
       "podiums": 0,
       "active": true
@@ -241,31 +241,31 @@
   "constructors": [
     {
       "name": "Mercedes",
-      "points": 538,
+      "points": 556,
       "wins": 11,
-      "podiums": 20
+      "podiums": 21
     },
     {
       "name": "Ferrari",
-      "points": 378,
+      "points": 405,
       "wins": 2,
-      "podiums": 9
+      "podiums": 10
     },
     {
       "name": "McLaren",
-      "points": 306,
+      "points": 316,
       "wins": 2,
       "podiums": 7
     },
     {
       "name": "Red Bull Racing",
-      "points": 263,
-      "wins": 0,
-      "podiums": 9
+      "points": 298,
+      "wins": 1,
+      "podiums": 10
     },
     {
       "name": "Racing Bulls",
-      "points": 83,
+      "points": 90,
       "wins": 0,
       "podiums": 0
     },
@@ -295,7 +295,7 @@
     },
     {
       "name": "Aston Martin",
-      "points": 3,
+      "points": 7,
       "wins": 0,
       "podiums": 0
     },
@@ -558,10 +558,15 @@
       "name": "Bahrain GP in Malaysia",
       "place": "Sepang",
       "date": "Oct 2–4",
-      "completed": false,
+      "completed": true,
       "sprint": false,
       "sprintCompleted": false,
-      "current": true
+      "current": false,
+      "podium": [
+        "VER",
+        "ANT",
+        "HAM"
+      ]
     },
     {
       "round": 17,
