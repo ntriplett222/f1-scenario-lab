@@ -1,7 +1,7 @@
 {
   "schemaVersion": 3,
   "season": 2026,
-  "updatedAt": "2026-10-04T14:10:42.858716Z",
+  "updatedAt": "2026-10-09T15:15:54.843917Z",
   "baselineLabel": "After Bahrain GP in Malaysia",
   "lastRaceRound": 16,
   "lastRaceName": "Bahrain GP in Malaysia",
@@ -577,7 +577,7 @@
       "completed": false,
       "sprint": true,
       "sprintCompleted": false,
-      "current": false
+      "current": true
     },
     {
       "round": 18,
