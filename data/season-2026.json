@@ -1,7 +1,7 @@
 {
   "schemaVersion": 3,
   "season": 2026,
-  "updatedAt": "2026-10-10T15:34:31.336432Z",
+  "updatedAt": "2026-10-10T19:30:24.019895Z",
   "baselineLabel": "After Singapore GP Sprint",
   "lastRaceRound": 16,
   "lastRaceName": "Bahrain GP in Malaysia",
@@ -12,7 +12,7 @@
       "number": 12,
       "name": "Kimi Antonelli",
       "team": "Mercedes",
-      "points": 325,
+      "points": 320,
       "wins": 8,
       "podiums": 13,
       "active": true
@@ -32,7 +32,7 @@
       "number": 44,
       "name": "Lewis Hamilton",
       "team": "Ferrari",
-      "points": 221,
+      "points": 214,
       "wins": 1,
       "podiums": 6,
       "active": true
@@ -42,7 +42,7 @@
       "number": 1,
       "name": "Lando Norris",
       "team": "McLaren",
-      "points": 189,
+      "points": 188,
       "wins": 2,
       "podiums": 5,
       "active": true
@@ -52,7 +52,7 @@
       "number": 16,
       "name": "Charles Leclerc",
       "team": "Ferrari",
-      "points": 197,
+      "points": 191,
       "wins": 1,
       "podiums": 4,
       "active": true
@@ -62,7 +62,7 @@
       "number": 3,
       "name": "Max Verstappen",
       "team": "Red Bull Racing",
-      "points": 196,
+      "points": 188,
       "wins": 1,
       "podiums": 8,
       "active": true
@@ -92,7 +92,7 @@
       "number": 30,
       "name": "Liam Lawson",
       "team": "Racing Bulls",
-      "points": 69,
+      "points": 65,
       "wins": 0,
       "podiums": 0,
       "active": true
@@ -132,7 +132,7 @@
       "number": 87,
       "name": "Oliver Bearman",
       "team": "Haas F1 Team",
-      "points": 23,
+      "points": 20,
       "wins": 0,
       "podiums": 0,
       "active": true
@@ -152,7 +152,7 @@
       "number": 27,
       "name": "Nico Hulkenberg",
       "team": "Audi",
-      "points": 9,
+      "points": 7,
       "wins": 0,
       "podiums": 0,
       "active": true
@@ -241,31 +241,31 @@
   "constructors": [
     {
       "name": "Mercedes",
-      "points": 561,
+      "points": 556,
       "wins": 11,
       "podiums": 21
     },
     {
       "name": "Ferrari",
-      "points": 418,
+      "points": 405,
       "wins": 2,
       "podiums": 10
     },
     {
       "name": "McLaren",
-      "points": 317,
+      "points": 316,
       "wins": 2,
       "podiums": 7
     },
     {
       "name": "Red Bull Racing",
-      "points": 306,
+      "points": 298,
       "wins": 1,
       "podiums": 10
     },
     {
       "name": "Racing Bulls",
-      "points": 94,
+      "points": 90,
       "wins": 0,
       "podiums": 0
     },
@@ -277,13 +277,13 @@
     },
     {
       "name": "Haas F1 Team",
-      "points": 30,
+      "points": 27,
       "wins": 0,
       "podiums": 0
     },
     {
       "name": "Audi",
-      "points": 19,
+      "points": 17,
       "wins": 0,
       "podiums": 0
     },
