@@ -1,10 +1,10 @@
 {
   "schemaVersion": 3,
   "season": 2026,
-  "updatedAt": "2026-10-24T00:38:08.022514Z",
-  "baselineLabel": "After Singapore GP",
-  "lastRaceRound": 17,
-  "lastRaceName": "Singapore GP",
+  "updatedAt": "2026-10-26T00:17:53.152648Z",
+  "baselineLabel": "After United States GP",
+  "lastRaceRound": 18,
+  "lastRaceName": "United States GP",
   "lastSessionName": "Race",
   "drivers": [
     {
@@ -12,9 +12,9 @@
       "number": 12,
       "name": "Kimi Antonelli",
       "team": "Mercedes",
-      "points": 340,
-      "wins": 8,
-      "podiums": 14,
+      "points": 365,
+      "wins": 9,
+      "podiums": 15,
       "active": true
     },
     {
@@ -22,7 +22,7 @@
       "number": 63,
       "name": "George Russell",
       "team": "Mercedes",
-      "points": 238,
+      "points": 242,
       "wins": 3,
       "podiums": 8,
       "active": true
@@ -32,7 +32,7 @@
       "number": 44,
       "name": "Lewis Hamilton",
       "team": "Ferrari",
-      "points": 229,
+      "points": 241,
       "wins": 1,
       "podiums": 6,
       "active": true
@@ -42,7 +42,7 @@
       "number": 1,
       "name": "Lando Norris",
       "team": "McLaren",
-      "points": 201,
+      "points": 211,
       "wins": 2,
       "podiums": 5,
       "active": true
@@ -52,9 +52,9 @@
       "number": 16,
       "name": "Charles Leclerc",
       "team": "Ferrari",
-      "points": 215,
+      "points": 233,
       "wins": 1,
-      "podiums": 5,
+      "podiums": 6,
       "active": true
     },
     {
@@ -62,9 +62,9 @@
       "number": 3,
       "name": "Max Verstappen",
       "team": "Red Bull Racing",
-      "points": 221,
+      "points": 236,
       "wins": 2,
-      "podiums": 9,
+      "podiums": 10,
       "active": true
     },
     {
@@ -72,7 +72,7 @@
       "number": 81,
       "name": "Oscar Piastri",
       "team": "McLaren",
-      "points": 138,
+      "points": 144,
       "wins": 0,
       "podiums": 2,
       "active": true
@@ -82,7 +82,7 @@
       "number": 6,
       "name": "Isack Hadjar",
       "team": "Red Bull Racing",
-      "points": 97,
+      "points": 105,
       "wins": 0,
       "podiums": 2,
       "active": true
@@ -92,7 +92,7 @@
       "number": 30,
       "name": "Liam Lawson",
       "team": "Racing Bulls",
-      "points": 75,
+      "points": 77,
       "wins": 0,
       "podiums": 0,
       "active": true
@@ -102,7 +102,7 @@
       "number": 10,
       "name": "Pierre Gasly",
       "team": "Alpine",
-      "points": 41,
+      "points": 42,
       "wins": 0,
       "podiums": 0,
       "active": true
@@ -241,37 +241,37 @@
   "constructors": [
     {
       "name": "Mercedes",
-      "points": 578,
-      "wins": 11,
-      "podiums": 22
+      "points": 607,
+      "wins": 12,
+      "podiums": 23
     },
     {
       "name": "Ferrari",
-      "points": 444,
+      "points": 474,
       "wins": 2,
-      "podiums": 11
+      "podiums": 12
     },
     {
       "name": "McLaren",
-      "points": 339,
+      "points": 355,
       "wins": 2,
       "podiums": 7
     },
     {
       "name": "Red Bull Racing",
-      "points": 332,
+      "points": 355,
       "wins": 2,
-      "podiums": 11
+      "podiums": 12
     },
     {
       "name": "Racing Bulls",
-      "points": 100,
+      "points": 102,
       "wins": 0,
       "podiums": 0
     },
     {
       "name": "Alpine",
-      "points": 68,
+      "points": 69,
       "wins": 0,
       "podiums": 0
     },
@@ -591,10 +591,15 @@
       "name": "United States GP",
       "place": "Austin",
       "date": "Oct 23–25",
-      "completed": false,
+      "completed": true,
       "sprint": false,
       "sprintCompleted": false,
-      "current": true
+      "current": false,
+      "podium": [
+        "ANT",
+        "LEC",
+        "VER"
+      ]
     },
     {
       "round": 19,
