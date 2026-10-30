@@ -1,7 +1,7 @@
 {
   "schemaVersion": 3,
   "season": 2026,
-  "updatedAt": "2026-10-26T00:17:53.152648Z",
+  "updatedAt": "2026-10-30T21:28:20.634718Z",
   "baselineLabel": "After United States GP",
   "lastRaceRound": 18,
   "lastRaceName": "United States GP",
@@ -25,7 +25,7 @@
       "points": 242,
       "wins": 3,
       "podiums": 8,
-      "active": true
+      "active": false
     },
     {
       "id": "HAM",
@@ -45,7 +45,7 @@
       "points": 211,
       "wins": 2,
       "podiums": 5,
-      "active": true
+      "active": false
     },
     {
       "id": "LEC",
@@ -65,7 +65,7 @@
       "points": 236,
       "wins": 2,
       "podiums": 10,
-      "active": true
+      "active": false
     },
     {
       "id": "PIA",
@@ -95,7 +95,7 @@
       "points": 77,
       "wins": 0,
       "podiums": 0,
-      "active": true
+      "active": false
     },
     {
       "id": "GAS",
@@ -125,7 +125,7 @@
       "points": 27,
       "wins": 0,
       "podiums": 0,
-      "active": true
+      "active": false
     },
     {
       "id": "BEA",
@@ -145,7 +145,7 @@
       "points": 10,
       "wins": 0,
       "podiums": 0,
-      "active": true
+      "active": false
     },
     {
       "id": "HUL",
@@ -175,7 +175,7 @@
       "points": 5,
       "wins": 0,
       "podiums": 0,
-      "active": true
+      "active": false
     },
     {
       "id": "OCO",
@@ -185,7 +185,7 @@
       "points": 7,
       "wins": 0,
       "podiums": 0,
-      "active": true
+      "active": false
     },
     {
       "id": "ALO",
@@ -215,7 +215,7 @@
       "points": 0,
       "wins": 0,
       "podiums": 0,
-      "active": true
+      "active": false
     },
     {
       "id": "BOT",
@@ -225,7 +225,7 @@
       "points": 0,
       "wins": 0,
       "podiums": 0,
-      "active": true
+      "active": false
     },
     {
       "id": "PER",
@@ -610,7 +610,7 @@
       "completed": false,
       "sprint": false,
       "sprintCompleted": false,
-      "current": false
+      "current": true
     },
     {
       "round": 20,
