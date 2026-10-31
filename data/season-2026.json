@@ -1,7 +1,7 @@
 {
   "schemaVersion": 3,
   "season": 2026,
-  "updatedAt": "2026-10-31T01:34:30.939741Z",
+  "updatedAt": "2026-10-31T22:39:37.167492Z",
   "baselineLabel": "After United States GP",
   "lastRaceRound": 18,
   "lastRaceName": "United States GP",
@@ -185,7 +185,7 @@
       "points": 7,
       "wins": 0,
       "podiums": 0,
-      "active": true
+      "active": false
     },
     {
       "id": "ALO",
