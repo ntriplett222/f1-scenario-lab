@@ -1,7 +1,7 @@
 {
   "schemaVersion": 3,
   "season": 2026,
-  "updatedAt": "2026-11-02T01:57:09.142114Z",
+  "updatedAt": "2026-11-03T14:06:19.810977Z",
   "baselineLabel": "After Mexico City GP",
   "lastRaceRound": 19,
   "lastRaceName": "Mexico City GP",
@@ -72,7 +72,7 @@
       "number": 81,
       "name": "Oscar Piastri",
       "team": "McLaren",
-      "points": 150,
+      "points": 144,
       "wins": 0,
       "podiums": 2,
       "active": true
@@ -82,7 +82,7 @@
       "number": 6,
       "name": "Isack Hadjar",
       "team": "Red Bull Racing",
-      "points": 105,
+      "points": 107,
       "wins": 0,
       "podiums": 2,
       "active": true
@@ -92,7 +92,7 @@
       "number": 30,
       "name": "Liam Lawson",
       "team": "Racing Bulls",
-      "points": 79,
+      "points": 83,
       "wins": 0,
       "podiums": 0,
       "active": true
@@ -102,7 +102,7 @@
       "number": 10,
       "name": "Pierre Gasly",
       "team": "Alpine",
-      "points": 43,
+      "points": 42,
       "wins": 0,
       "podiums": 0,
       "active": true
@@ -122,7 +122,7 @@
       "number": 43,
       "name": "Franco Colapinto",
       "team": "Alpine",
-      "points": 31,
+      "points": 27,
       "wins": 0,
       "podiums": 0,
       "active": true
@@ -142,7 +142,7 @@
       "number": 5,
       "name": "Gabriel Bortoleto",
       "team": "Audi",
-      "points": 10,
+      "points": 14,
       "wins": 0,
       "podiums": 0,
       "active": true
@@ -241,7 +241,7 @@
       "id": "HIR",
       "number": 50,
       "name": "Ryo HIRAKAWA",
-      "team": "",
+      "team": "Haas F1 Team",
       "points": 0,
       "wins": 0,
       "podiums": 0,
@@ -263,37 +263,37 @@
     },
     {
       "name": "McLaren",
-      "points": 371,
+      "points": 365,
       "wins": 2,
       "podiums": 7
     },
     {
       "name": "Red Bull Racing",
-      "points": 380,
+      "points": 382,
       "wins": 3,
       "podiums": 13
     },
     {
       "name": "Racing Bulls",
-      "points": 104,
+      "points": 108,
       "wins": 0,
       "podiums": 0
     },
     {
       "name": "Alpine",
-      "points": 74,
+      "points": 69,
       "wins": 0,
       "podiums": 0
     },
     {
       "name": "Haas F1 Team",
-      "points": 30,
+      "points": 31,
       "wins": 0,
       "podiums": 0
     },
     {
       "name": "Audi",
-      "points": 23,
+      "points": 27,
       "wins": 0,
       "podiums": 0
     },
