@@ -1,7 +1,7 @@
 {
   "schemaVersion": 3,
   "season": 2026,
-  "updatedAt": "2026-11-03T14:06:19.810977Z",
+  "updatedAt": "2026-11-05T06:38:35.852794Z",
   "baselineLabel": "After Mexico City GP",
   "lastRaceRound": 19,
   "lastRaceName": "Mexico City GP",
@@ -242,7 +242,7 @@
       "number": 50,
       "name": "Ryo HIRAKAWA",
       "team": "Haas F1 Team",
-      "points": 0,
+      "points": 1,
       "wins": 0,
       "podiums": 0,
       "active": true
