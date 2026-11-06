@@ -1,7 +1,7 @@
 {
   "schemaVersion": 3,
   "season": 2026,
-  "updatedAt": "2026-11-06T17:56:00.719588Z",
+  "updatedAt": "2026-11-06T23:04:49.461237Z",
   "baselineLabel": "After Mexico City GP",
   "lastRaceRound": 19,
   "lastRaceName": "Mexico City GP",
@@ -55,7 +55,7 @@
       "points": 245,
       "wins": 1,
       "podiums": 6,
-      "active": false
+      "active": true
     },
     {
       "id": "VER",
@@ -75,7 +75,7 @@
       "points": 144,
       "wins": 0,
       "podiums": 2,
-      "active": false
+      "active": true
     },
     {
       "id": "HAD",
@@ -105,7 +105,7 @@
       "points": 42,
       "wins": 0,
       "podiums": 0,
-      "active": false
+      "active": true
     },
     {
       "id": "LIN",
@@ -155,7 +155,7 @@
       "points": 13,
       "wins": 0,
       "podiums": 0,
-      "active": false
+      "active": true
     },
     {
       "id": "SAI",
@@ -165,7 +165,7 @@
       "points": 7,
       "wins": 0,
       "podiums": 0,
-      "active": false
+      "active": true
     },
     {
       "id": "ALB",
@@ -235,7 +235,7 @@
       "points": 0,
       "wins": 0,
       "podiums": 0,
-      "active": false
+      "active": true
     },
     {
       "id": "HIR",
