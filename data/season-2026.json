@@ -1,10 +1,10 @@
 {
   "schemaVersion": 3,
   "season": 2026,
-  "updatedAt": "2026-11-06T23:04:49.461237Z",
-  "baselineLabel": "After Mexico City GP",
-  "lastRaceRound": 19,
-  "lastRaceName": "Mexico City GP",
+  "updatedAt": "2026-11-08T20:44:52.726651Z",
+  "baselineLabel": "After São Paulo GP",
+  "lastRaceRound": 20,
+  "lastRaceName": "São Paulo GP",
   "lastSessionName": "Race",
   "drivers": [
     {
@@ -12,7 +12,7 @@
       "number": 12,
       "name": "Kimi Antonelli",
       "team": "Mercedes",
-      "points": 380,
+      "points": 390,
       "wins": 9,
       "podiums": 16,
       "active": true
@@ -22,7 +22,7 @@
       "number": 63,
       "name": "George Russell",
       "team": "Mercedes",
-      "points": 250,
+      "points": 262,
       "wins": 3,
       "podiums": 8,
       "active": true
@@ -32,7 +32,7 @@
       "number": 44,
       "name": "Lewis Hamilton",
       "team": "Ferrari",
-      "points": 259,
+      "points": 261,
       "wins": 1,
       "podiums": 7,
       "active": true
@@ -42,9 +42,9 @@
       "number": 1,
       "name": "Lando Norris",
       "team": "McLaren",
-      "points": 221,
-      "wins": 2,
-      "podiums": 5,
+      "points": 246,
+      "wins": 3,
+      "podiums": 6,
       "active": true
     },
     {
@@ -52,7 +52,7 @@
       "number": 16,
       "name": "Charles Leclerc",
       "team": "Ferrari",
-      "points": 245,
+      "points": 251,
       "wins": 1,
       "podiums": 6,
       "active": true
@@ -62,9 +62,9 @@
       "number": 3,
       "name": "Max Verstappen",
       "team": "Red Bull Racing",
-      "points": 261,
+      "points": 279,
       "wins": 3,
-      "podiums": 11,
+      "podiums": 12,
       "active": true
     },
     {
@@ -72,7 +72,7 @@
       "number": 81,
       "name": "Oscar Piastri",
       "team": "McLaren",
-      "points": 144,
+      "points": 152,
       "wins": 0,
       "podiums": 2,
       "active": true
@@ -82,9 +82,9 @@
       "number": 6,
       "name": "Isack Hadjar",
       "team": "Red Bull Racing",
-      "points": 107,
+      "points": 122,
       "wins": 0,
-      "podiums": 2,
+      "podiums": 3,
       "active": true
     },
     {
@@ -92,7 +92,7 @@
       "number": 30,
       "name": "Liam Lawson",
       "team": "Racing Bulls",
-      "points": 83,
+      "points": 87,
       "wins": 0,
       "podiums": 0,
       "active": true
@@ -152,7 +152,7 @@
       "number": 27,
       "name": "Nico Hulkenberg",
       "team": "Audi",
-      "points": 13,
+      "points": 14,
       "wins": 0,
       "podiums": 0,
       "active": true
@@ -246,36 +246,46 @@
       "wins": 0,
       "podiums": 0,
       "active": false
+    },
+    {
+      "id": "CAM",
+      "number": 51,
+      "name": "Rafael CAMARA",
+      "team": "Haas F1 Team",
+      "points": 0,
+      "wins": 0,
+      "podiums": 0,
+      "active": true
     }
   ],
   "constructors": [
     {
       "name": "Mercedes",
-      "points": 630,
+      "points": 652,
       "wins": 12,
       "podiums": 24
     },
     {
       "name": "Ferrari",
-      "points": 504,
+      "points": 512,
       "wins": 2,
       "podiums": 13
     },
     {
       "name": "McLaren",
-      "points": 365,
-      "wins": 2,
-      "podiums": 7
+      "points": 398,
+      "wins": 3,
+      "podiums": 8
     },
     {
       "name": "Red Bull Racing",
-      "points": 382,
+      "points": 415,
       "wins": 3,
-      "podiums": 13
+      "podiums": 15
     },
     {
       "name": "Racing Bulls",
-      "points": 108,
+      "points": 112,
       "wins": 0,
       "podiums": 0
     },
@@ -293,7 +303,7 @@
     },
     {
       "name": "Audi",
-      "points": 27,
+      "points": 28,
       "wins": 0,
       "podiums": 0
     },
@@ -633,10 +643,15 @@
       "name": "São Paulo GP",
       "place": "São Paulo",
       "date": "Nov 6–8",
-      "completed": false,
+      "completed": true,
       "sprint": false,
       "sprintCompleted": false,
-      "current": true
+      "current": false,
+      "podium": [
+        "NOR",
+        "VER",
+        "HAD"
+      ]
     },
     {
       "round": 21,
