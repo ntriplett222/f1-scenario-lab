@@ -1,7 +1,7 @@
 {
   "schemaVersion": 3,
   "season": 2026,
-  "updatedAt": "2026-11-08T20:44:52.726651Z",
+  "updatedAt": "2026-11-09T16:10:28.751302Z",
   "baselineLabel": "After São Paulo GP",
   "lastRaceRound": 20,
   "lastRaceName": "São Paulo GP",
@@ -52,7 +52,7 @@
       "number": 16,
       "name": "Charles Leclerc",
       "team": "Ferrari",
-      "points": 251,
+      "points": 249,
       "wins": 1,
       "podiums": 6,
       "active": true
@@ -92,7 +92,7 @@
       "number": 30,
       "name": "Liam Lawson",
       "team": "Racing Bulls",
-      "points": 87,
+      "points": 89,
       "wins": 0,
       "podiums": 0,
       "active": true
@@ -267,7 +267,7 @@
     },
     {
       "name": "Ferrari",
-      "points": 512,
+      "points": 510,
       "wins": 2,
       "podiums": 13
     },
@@ -285,7 +285,7 @@
     },
     {
       "name": "Racing Bulls",
-      "points": 112,
+      "points": 114,
       "wins": 0,
       "podiums": 0
     },
